@@ -2,7 +2,7 @@ Gabriel Thompson (+ Iggy)
 APCS
 HW22 -- On Producing Better Code and More Quality
 2021-10-21
-time spent: XXhrs
+time spent: 0.7hrs
 
 Notes/reactions:
  - Does egoless programming apply to other fields, like writing (particularly non-fiction)? This is
@@ -12,11 +12,14 @@ Notes/reactions:
    If not, why not?
  - It's a really smart idea to motivate programmers, themselves, to call over reviewers to review
    their code. It's much harder to be defensive of your code when you, yourself, incite the review.
- - Is this a widely accepted prac
+ - Is this a widely accepted practice? Is it implemented at large companies?
+ - In the case of Bill G., the author describes Marilyn telling him to take the day off. Couldn't
+   this be taken wrong by Bill G., and make him think that she's saying that he's not fit to work,
+   and induce the exact same ego that egoless programming aims to abolish?
 
 Other notes:
- - Bill G. = Bill Gates???
- - How long ago was this made that the author is citing "keypunches" and "magnetic tape" as a means of
+ - Bill G. = young Bill Gates??? 🤔🤔🤔 <- in case this doesn't render in unicode, those are thinking emojis
+ - How long ago was this made that the author is citing "keypunch operators" and punch cards as a means of
    programming?
  - It's interesting that we're reading this article now, I'm not sure, but I wonder if it's because we
    were just reviewing the other trios' code for HW20
