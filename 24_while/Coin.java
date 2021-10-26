@@ -1,16 +1,14 @@
 /*
-Team Nepal (Gabriel Thompson + Iggy, Kevin Li + Kirby)
+Gabriel Thompson and Kevin Li
 APCS
-HW23 -- What Does Equality Look Like?
-2021-10-23
-time spent: 0.6 hours
+HW24 - Get It While You Can
+2021-10-25
+time spent: .8 hours
 QCC:
-  - In order to use java.util.Random, we checked the documentaiton which said it required a "seed" which was a long, 
-  and we didn't really know what to write for it. How are we supposed to use java.util.Random?
-  - The function reset() was mentioned in the code outline, but not used in Driver.java, why is this?
+    - What is it about classes that makes us use .equals() to compare them instead of using == like with integer variables?
 DISCO: 
-  - The documentation for java.util.Random suggested using Math.random, so we went with it instead
-  - The initials of Clyde Sinclair are CS 🤔🤔🤔
+    - We internalized the structure of while lopps while working on until divisible. The While loops don't run simultaneously
+    - To call methods from main, those methods must be static
 */
 
 import java.util.Random;
@@ -179,6 +177,7 @@ public class Coin {
       headsCtr++;
       upFace = "heads";
     }
+    flipCtr++;
     return upFace;
   }
 
