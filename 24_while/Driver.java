@@ -1,65 +1,74 @@
-/***
-    driver for class Coin
-    ~~~ SUGGESTED WORKFLOW: ~~~
-    1. Compile this file and run. Note anything notable.
-    2. Move the "TOP" line down, so that it is below the first statement.
-    (emacs: with cursor at beginning of TOP line, C-k C-k, DOWN, DOWN, C-y)
-    (your editor: ???)
-    3. Compile and run again.
-    4. Resolve errors one at a time until it works.
-    5. Repeat 2-4 until TOP meets BOTTOM.
-***/
+/*
+Gabriel Thompson and Kevin Li
+APCS
+HW24 - Get It While You Can
+2021-10-25
+time spent: .8 hours
+QCC:
+    - What is it about classes that makes us use .equals() to compare them instead of using == like with integer variables?
+DISCO: 
+    - We internalized the structure of while lopps while working on until divisible. The While loops don't run simultaneously
+    - To call methods from main, those methods must be static
+*/
 
 public class Driver {
 
-  public static void main( String[] args ) {
+    public static void main( String[] args ) {
+      Coin c1 = new Coin();
+      Coin c2 = new Coin();
 
-    //build Objects from blueprint specified by class Coin
+      untilHeads(c1, 2000);
+      printSummary(c1);
 
+      untilDivisible(c1, 2005);
+      printSummary(c1);
 
-    //test default constructor
-      Coin mine = new Coin();
-      //test 1st overloaded constructor
-      Coin yours = new Coin( "quarter" );
-      //test 2nd overloaded constructor
-      Coin wayne = new Coin( "dollar", "heads" );
-      //test toString() methods of each Coin
-      
-      public void untilHeads( int numHeads, Coin c ) {
+      untilMatches(c1, c2, 8789);
+      printSummary(c1);
+      printSummary(c2);
+    }//end main()
+
+    public static void printSummary( Coin c ) {
+        System.out.println(" --- SUMMARY --- ");
+        System.out.println(" Flip count: " + c.getFlipCtr());
+        System.out.println(" Heads count: " + c.getHeadsCtr());
+        System.out.println(" Tails count: " + c.getTailsCtr());
+        System.out.println(" Current Face: " + c.getUpFace());
+        System.out.println(" Value: " + c.getValue());
+        System.out.println(" --- SUMMARY --- \n");
+        
+    }
+
+    public static void untilHeads( Coin c, int numHeads ) {
         int headCount = 0;
         
         while ( headCount < numHeads) {
-          c.flip();
+            if (c.flip() == "heads") {
+                headCount++;
+            }
         }
-        System.out.println("Coins flipped: " + c.getFlipCtr );
-        System.out.println(numHeads);
-	
-      }
+    }
 
-      public void untilDivisible( Coin c, int birthYear ){
-	while (c.getFlipCtr() <  65536) {
-		c.flip();
-	}
+    public static void untilDivisible( Coin c, int birthYear ) {
+        while (c.getFlipCtr() < 65536) {
+            c.flip();
+        }
+        while (c.getFlipCtr() % birthYear != 0) {
+            c.flip();
+        }
+    }
+
+    public static void untilMatches( Coin c1, Coin c2, int matches) {
+        int numMatches = 0;
+
+        while (numMatches < matches) {
+            c1.flip();
+            c2.flip();
+            if ( c1.equals(c2) ) {
+                numMatches++;
+            }
+        }
+        System.out.println(numMatches + " matches");
+    }
 }
-      System.out.println("mine: " + mine);
-      System.out.println("yours: " + yours);
-      System.out.println("wayne: " + wayne);
-      //test flip() method
-      System.out.println("\nAfter flipping...");
-      yours.flip();
-      wayne.flip();
-      System.out.println("yours: " + yours);
-      System.out.println("wayne: " + wayne);
-      //test equals() method
-      if ( yours.equals(wayne) ) {
-        System.out.println( "Matchee matchee!" );
-      }
-      else {
-        System.out.println( "No match. Firestarter you can not be." );
-      }
-      /*===================TOP==========================
-      ====================BOTTOM======================*/
-
-  }//end main()
-
-}//end class
+//end class
