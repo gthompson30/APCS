@@ -4,7 +4,7 @@ public class makeAbba {
 	}
 	
 	public static void main( String[] args ) {
-		System.out.println(makeAbba("Hi", "Bye"));
-		System.out.println(makeAbba("Yo", "Alice"));
+		System.out.println(makeAbba("Hi", "Bye") + " ... should be \"HiByeByeHi\"");
+		System.out.println(makeAbba("Yo", "Alice") + " ... should be \"YoAliceAliceYo\"");
 	}
 }
