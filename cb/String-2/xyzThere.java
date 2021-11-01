@@ -13,4 +13,9 @@ public class xyzThere {
 		}
 		return false;
 	}
+	
+	public static void main( String[] args ) {
+		System.out.println(xyzThere("abc.xyzxyz") + " ... should be true");
+		System.out.println(xyzThere("1.xyz.xyz2.xyz") + " ... should be false");
+	}
 }
