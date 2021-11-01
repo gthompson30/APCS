@@ -11,4 +11,9 @@ public class countCode {
 		}
 		return count;
 	}
+	
+	public static void main( String[] args ) {
+		System.out.println(countCode("aaacodebbb") + " ... should be 1");
+		System.out.println(countCode("AAcodeBBcoleCCccoreDD") + " ... should be 3");
+	}
 }
