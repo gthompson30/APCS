@@ -11,4 +11,9 @@ public class endOther {
                 }
 		return false;
 	}
+	
+	public static void main( String[] args ) {
+		System.out.println(endOther("abc", "abXabc") + " ... should be true");
+		System.out.println(endOther("abcXYZ", "abcDEF") + " ... should be false");
+	}
 }
