@@ -14,4 +14,9 @@ public class catDog {
 	public static boolean catDog( String str ) {
 		return countInstances(str, "cat") == countInstances(str, "dog");
 	}
+	
+	public static void main( String[] args ) {
+		System.out.println(catDog("catdog") + " ... should be true");
+		System.out.println(catDog("catxxdogxxxdog") + " ... should be false");
+	}
 }
