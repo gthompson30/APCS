@@ -54,19 +54,13 @@ public class Pig {
 
     */
     public static String parseInput(String input){
-      String ret = "";
-
-      if (! input.substring(0,1).toLowerCase().equals(input.substring(0,1))){
-        ret += CAPCHAR;
-        ret += input.substring(1);
-      }
-
+      String ret = input;
       if (input.toLowerCase().charAt(0) == 'y') {
-        ret += YCHAR;
-        ret += input;
-        return ret.toLowerCase();
+        ret = YCHAR+ret.substring(1);
       }
-      ret += input;
+      if (! input.substring(0,1).toLowerCase().equals(input.substring(0,1))){
+        ret = CAPCHAR +ret;
+      }
       return ret.toLowerCase();
       /*This is broken - Fix it!*/
     }
