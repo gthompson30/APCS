@@ -54,12 +54,17 @@ public class Pig {
 
     */
     public static String parseInput(String input){
-      String ret = input;
-      if (input.toLowerCase().charAt(0) == 'y') {
-        ret = YCHAR+ret.substring(1);
-      }
+      String ret = "";
+
       if (! input.substring(0,1).toLowerCase().equals(input.substring(0,1))){
-        ret = CAPCHAR +ret;
+        ret += CAPCHAR;
+      }
+
+      if (input.toLowerCase().charAt(0) == 'y') {
+        ret = YCHAR + input.substring(1)+ret;
+      }
+      else{
+        ret = input+ret;
       }
       return ret.toLowerCase();
       /*This is broken - Fix it!*/
@@ -80,7 +85,17 @@ public class Pig {
     }
 
     public static String formatOutput(String input){
-      return input;
+      String ret = input;
+      if (ret.contains(CAPCHAR)){
+        int place = ret.indexOf(CAPCHAR);
+        ret = ret.substring(0,place)+ret.substring(place+1);
+        ret = ret.substring(0,1).toUpperCase() + ret.substring(1);
+      }
+      if (ret.contains(YCHAR)){
+        int place = ret.indexOf(YCHAR);
+        ret = ret.substring(0,place)+"y"+ret.substring(place+1);
+      }
+      return ret;
     }
     public static String engToPig(String input){
       return formatOutput(translate(parseInput(input)));
