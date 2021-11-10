@@ -23,7 +23,12 @@
  ***/
 
 // code to be added to your growing Pig Latin translator
-
+/*
+DISCO:
+QCC:
+NEW IN v0:
+We came up with a method for dealing with capitalization and cases where y is a vowel. Our implementation doesn't quite work yet.
+*/
 public class Pig {
 
     private static final String VOWELS = "aeiouy";
