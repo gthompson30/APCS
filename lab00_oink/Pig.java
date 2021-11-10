@@ -43,8 +43,8 @@ HOW WE UTILIZED SCANNER DEMO:
    from the scanner demo by allowing the user to exit by typing exit()
 
 WHAT CAUSES THE RUNTIME ERROR IN THE SCANNER DEMO:
- - There isn't a runtime error, but there isn't a very natural way of killing the loop, since the hasNext()
-   method is never false. The only way out is to do a ^C, or to close the window.
+ - There isn't a runtime error, rather a logical error, but there isn't a very natural way of killing the loop,
+   since the hasNext() method is never false. The only way out is to do a ^C, or to close the window.
 
 NEW IN v2:
  - Refactored some of our methods using methods from HW31. Added scanner functionality, which also allows
@@ -102,9 +102,19 @@ public class Pig {
         return input + "way";
       }
       else {
+        String punctuation = onlyPunc(input);
+
         for (int i = 1; i < input.length(); i++) {
           if (isAVowel(input.charAt(i) + "")) {
-            return input.substring(i) + input.substring(0, i) + "ay";
+            String ret = "";
+
+            for (int j = i; j < input.length(); j++) {
+              if (!isPunc(input.charAt(j) + "")) {
+                ret += input.charAt(j);
+              }
+            }
+
+            return ret + input.substring(0, i) + "ay" + punctuation;
           }
         }
         return input + "ay";
@@ -113,6 +123,7 @@ public class Pig {
 
     public static String formatOutput(String input){
       String ret = input;
+      String punctuation = onlyPunc(input); // assumes that punctation is at the end
       if (ret.contains(CAPCHAR)){
         int place = ret.indexOf(CAPCHAR);
         ret = ret.substring(0,place)+ret.substring(place+1);
@@ -122,11 +133,25 @@ public class Pig {
         int place = ret.indexOf(YCHAR);
         ret = ret.substring(0,place)+"y"+ret.substring(place+1);
       }
+      if (hasPunc(ret)) {
+        //et += onlyPunc(ret);
+      }
       return ret;
     }
     public static String engToPig(String input){
       return formatOutput(translate(parseInput(input)));
     }
+
+    public static String onlyPunc(String word) {
+      String ret = "";
+      for (int i = 0; i < word.length(); i++) {
+        if (isPunc(word.charAt(i) + "")) {
+          ret += word.charAt(i);
+        }
+      }
+      return ret;
+    }
+
     /*=====================================
       boolean isPunc(String) -- tells whether a character is punctuation
       pre:  symbol.length() == 1
@@ -155,9 +180,14 @@ public class Pig {
       post: hasPunc(“cat.”) -> true
             hasPunc(“cat”) -> false
       =====================================*/
-    // public static boolean hasPunc( String w ) {
-    //
-    // }
+    public static boolean hasPunc( String w ) {
+      for (int i = 0; i < w.length(); i++) {
+        if (isPunc(w.charAt(i) + "")) {
+          return true;
+        }
+      }
+      return false;
+    }
 
 
     /*=====================================
