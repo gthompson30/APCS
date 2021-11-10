@@ -1,9 +1,9 @@
 /***
- * Clyde "Thluffy" Sinclair, Joshua "Quacker" Yagupsky, Nora Miller (Team Walrus)
+ * Gabriel Thompson, Joshua "Quacker" Yagupsky, Nora Miller (Team Walrus)
  * APCS
  * L00 -- Pig Latin translation
  * 2021-11-08
- * time spent: ?hrs
+ * time spent: 2.5hrs
  *
  * class Pig
  * a Pig Latin translator
