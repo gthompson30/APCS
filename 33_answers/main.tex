@@ -1,0 +1,208 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Team Walrus HW33 Response}
+\author{Gabriel Thompson, Joshua Yagupsky, Nora Miller}
+
+\begin{document}
+\maketitle
+
+\section{Questions}
+
+\subsection{Q0}
+
+\begin{enumerate}
+    \item[] GT's answer: Purple Hat by Sofi Tukker
+    \item[] NM's answer: Black Hole Sun by Soundgarden
+    \item[] YG's answer: Zoolookologie by Jean-Michel Jarre
+\end{enumerate}
+
+\subsection{Q1}
+
+Our answer: \textbf{B}
+
+\noindent\textit{Reasoning:} If you make a truth table like the following:
+\begin{center}
+\begin{tabular}{||c c c||} 
+ \hline
+ p & b & !(p \&\& b) \&\& (!p \|\| b) \\ [0.5ex] 
+ \hline\hline
+ true & true & false \\ 
+ \hline
+ true & false & false \\ 
+ \hline
+ false & true & true \\ 
+ \hline
+ false & false & true \\ 
+ \hline
+\end{tabular}
+\end{center}
+This demonstrates that p must be false in order for the result to evaluate to true
+
+\subsection{Q2}
+
+Our answer: \textbf{C}
+
+\noindent\textit{Reasoning:} Choice A would result in 9 + 0.95 evaluating to 9.95, choice B, 995/100.0, would also evaluate to 9.95 because there is a decimal point in 100.0. Choice C would evaluate, however, to 9.0, because 95/100 will be processed as int division and will be rounded down to 0.
+
+\subsection{Q3}
+
+Our answer: \textbf{B}
+
+\noindent\textit{Reasoning:} The code tells us several things: 
+Firstly,numbers are being printed out in a line, starting with the number ten. Secondly, the number being printed reduces by 3 each time. This eliminates choices c, d, and e. Thirdly, the boolean expression for the loop is i $>$ 0, meaning that when i becomes less than 0, the loop will end. This means that answer D is incorrect, leaving us with B. 
+
+\subsection{Q4}
+
+Our answer: \textbf{C}
+
+\noindent\textit{Reasoning:} The while loop is essentially running through all values of i from 0 to 7 (inclusive), and adding 1 each time. In the last iteration, i will have a value of 7, so when it is incremented, the final value will be 8.(i cannot be more than 8, because once i is 8, the initial condition for the loop is not satisfied). 
+
+\subsection{Q5}
+
+Our answer: \textbf{E}
+
+\noindent\textit{Reasoning:} In order to get this code to compile, we do not have to edit \verb|instanceMethod|. Java does not have a problem setting class fields and running class methods in an instance of that class. However, Java does have a problem calling instance methods and setting instance fields from a static context, because it's unclear which instance we want Java to use. Thus, we must remove two lines in one method but none in the other.
+
+
+\subsection{Q6}
+
+Our answer: \textbf{C}
+
+\noindent\textit{Reasoning:} Recursion, such as in the case of the factorial function, always relies on using the smaller cases of the same function to solve larger cases of that function. Therefore, recursion is a method in which the solution of a problem depends on smaller instances of the same problem. 
+
+\subsection{Q7}
+
+Our answer: \textbf{A}
+
+\noindent\textit{Reasoning:} According to its definition on Wikipedia:
+"a namespace is a set of signs (names) that are used to identify and refer to objects of various kinds." In general, a namespace is an identifier for a piece of data.
+
+\subsection{Q8}
+
+Our answer: \textbf{D}
+
+\noindent\textit{Reasoning:} \verb|3.9 / 1.3| will by default return the \verb|double| value of \verb|3.0|. This won't be automatically converted to \verb|int|, because of concern of "lossy conversion". ( \textbf{Note:} The other way around, where g is a \verb|double| and the value being assigned to g is an \verb|int| would be treated differently. See questions 12 and 18.)
+
+\subsection{Q9}
+
+Our answer: \textbf{D}
+
+\noindent\textit{Reasoning:} The code will not be able to compile, because the prefix for the classes are \verb|class| rather than \verb|public class|. This means that they will not be able to access each other. Also, the file won't be able to run, because Java requires a \verb|public class| method in the file for it to be executable. 
+
+\subsection{Q10}
+
+Our answer: \textbf{A}
+
+\noindent\textit{Reasoning:} The first \verb|if| statement checks if \verb|t| is larger than \verb|h|, which it is not, so Java proceeds to the next  \verb|if| statement without changing anything. This statement checks if \verb|h| is larger than \verb|w|, which it is, so the value of \verb|s| is set to 4. Then, the program checks if \verb|h| (4) is greater than \verb|t| (-4), which it is, so it increments \verb|s| by 1, making it equal to 5.
+
+\subsection{Q11}
+
+Our answer: \textbf{A}
+
+\noindent\textit{Reasoning:} The program starts with the following:
+\begin{verbatim}
+    (int)(x + y + x / y - x * y - x / (10*y) );
+\end{verbatim}
+This is equivalent to,
+\begin{verbatim}
+    (int)((5.0 + 2.0) + (5.0 / 2.0) - (5.0 * 2.0) - (5.0 / (10*2.0)) );
+\end{verbatim}
+This then simplifies to,
+\begin{verbatim}
+    (int)(7.0 + 2.5 - 10.0 - 0.25);
+\end{verbatim}
+This then turns into \verb|(int)(-0.75)|, which then gets turned into 0.(\textbf{Note:} Upon further investigation, typecasting from a \verb|double| to an \verb|int| returns the floor of a number if it is positive and the ceiling of a number if it is negative.)
+
+\subsection{Q12}
+
+Our answer: \textbf{D}
+
+\noindent\textit{Reasoning:} \verb|int|, \verb|short|, \verb|long|, and \verb|byte| all contain integers, so they can contain a number such as 89. \verb|double| contains a floating point number, but since storing an integer as a floating point number does not risk "lossy conversion," this is fine, too. The range of \verb|int| is from \(-2^{31} + 1\) to \(2^{31} - 1\), the range of \verb|byte| is from \(-255\) to \(+255\), the range of \verb|short| is from \(-32767\) to \(+32767\), the range of \verb|long| is from \(-2^{63} + 1\) to \(2^{63} - 1\), and the range of \verb|double| is from \(-2^{31} + 1\) to \(2^{31} - 1\), and 89 falls within all of those ranges.
+
+\subsection{Q13}
+
+Our answer: \textbf{C}
+
+\noindent\textit{Reasoning:} It's always a good idea to review code with others. The only other good moral is option E, although it's not really the moral of the class and we barely touched upon cognitive dissonance except during egoless programming. Also, pineapples have sleeves.
+
+\subsection{Q14}
+
+Our answer: \textbf{A}
+
+\noindent\textit{Reasoning:} Option A would evaluate \verb|(double)(25/4)| to \verb|(double)(6)|, because neither \verb|25| nor \verb|4| has a decimal place to indicate floating point accuracy. \verb|(double)(6)| then evaluates to \verb|6.0|, which is not \verb|6.25|, so it is the correct answer.
+
+\subsection{Q15}
+
+Our answer: \textbf{D}
+
+\noindent\textit{Reasoning:} Essentially, we want to write some code that chooses a number at least 10 and less than 15, using \verb|Math.random()|, which generates a random value from 0 to 1. Since the range our number can be in is 5, we multiply \verb|Math.random()| by 5. Flooring the result using typecasting yields the integers 0, 1, 2, 3, and 4 with equal probability. Finally, we can add ten to the result of \verb|(int)(Math.random()*5)|, to get a random number in range [10,15). Codified, this would be: \verb|(int)(Math.random()*5)+10|, which does the aforementioned operations.
+
+\subsection{Q16}
+
+Our answer: \textbf{B}
+
+\noindent\textit{Reasoning:} The code \verb|System.out.println("1" + new String("2") + 3);| first creates a new \verb|String| object using its constructor, which returns the class instance, and then concatenates that with "1" and "3" by using the \verb|String| object's \verb|toString()| method. Note that Java treats \verb|+| as a concatenation operator as soon as it finds a \verb|String| in whatever it is running. Since the first thing before the \verb|+|is a \verb|String|, Java concatenates instead of adding. 
+
+\subsection{Q17}
+
+Our answer: \textbf{D}
+
+\noindent\textit{Reasoning:} The code first creates three identical instances of the class \verb|Coin()|. Then, it is testing their equality with \verb|==|, which compares their memory addresses. This yield \verb|false| for the first two invocations, as the three instances are stored at separate memory addresses. The next two, however, will yield \verb|true|, as the \verb|.equals()| method verifies that the instances themselves are the same.
+
+\subsection{Q18}
+
+Our answer: \textbf{B}
+
+\noindent\textit{Reasoning:} As explained in question 12, on initial assessment, we can assign an integer, 160, to an \verb|int|, a \verb|byte|, a \verb|short|, or a \verb|long|, which are all integers, or a \verb|double|, which is a floating point number. Looking at ranges now, 160 falls within all of the ranges listed in Q12, except for the range of \verb|byte|, which can only handle values up to 127. Therefore, the code will be valid for datatype \verb|int|, \verb|short|, \verb|long|, and \verb|double| (I, III, IV, and V), just not \verb|byte| (IV).
+
+\subsection{Q19}
+
+Our answer: \textbf{D}
+
+\noindent\textit{Reasoning:} The code will do the following:
+First, \verb|x| will be 123 and \verb|y| will be 0. Then, \verb|y| will increase by 3 to become 3, and \verb|x| will become 12. Then, \verb|y| will multiply by 10 to become 30, \verb|y| will increase by 2 to become 32, and \verb|x| will become 1. Then, \verb|y| will multiply by 10 to become 320, \verb|y| will increase by 1 to become 321, and \verb|x| will again divide by 10 to become 0. This will make the final value of \verb|y| 321. This code is essentially just setting \verb|y| to the reversed value of \verb|x|, and setting \verb|x| to 0.
+
+\subsection{Q20}
+
+Our answer: \textbf{D}
+
+\noindent\textit{Reasoning:} In order for \verb|meMaybe()| to fire, the first two statements must be \verb|false|, so that Java gets to that part of the OR gate. If \verb|a==b| is \verb|false|, then \(a \neq b\). If \verb|!(c<=b)| is \verb|false|, then \(c \leq b\). The only option that satisfies both criteria is \(a > b > c\).
+
+\subsection{Q21}
+
+Our answer: \textbf{C}
+
+\noindent\textit{Reasoning:} This code is essentially incrementing  \verb|p|, and \verb|q| by 1 until \verb|p| reaches 10, and in each iteration adding \(p \% q\) to \verb|sum|. Thus, \verb|sum| will be equal to \(3  \bmod  1 + 4  \bmod 2 + 5 \bmod 3 + 6 \bmod 4 + 7 \bmod 5 + 8 \bmod 6 + 9 \bmod 7 + 10 \bmod 8 = 0 + 0 + 2 * 6 = 12\)
+
+\subsection{Q22}
+
+Our answer: \textbf{C}
+
+\noindent\textit{Reasoning:} This code is basically running through every multiple of \verb|x| until it reaches one which is divisible by \verb|y|, which is how you find the least common multiple of two integers \verb|x| and \verb|y|. The output, \verb|m|, is going to be the LCM of \verb|x| and \verb|y|.
+
+\subsection{Q23}
+
+Our answer: \textbf{C}
+
+\noindent\textit{Reasoning:} The code essentially takes an array of \verb|String|s, and returns the same array but with the first characters of the first two items swapped. It does this by creating a \verb|temp| variable to store the first character of the first item. Then, it sets the first item to the concatenation of the first character of the second item and the rest of the first item. It then does the reverse for the second item, setting it to the first item of the first character (stored in \verb|temp|) followed by the rest of the second item.
+
+\subsection{Q24}
+
+Our answer: \textbf{C}
+
+\noindent\textit{Reasoning:} This code starts with \(n = 253\), and then adds 3 to it and halves it with integer division, 50 times. In the first iteration, \verb|n| becomes 128, which becomes 65 in the second iteration. The value of \verb|n| follows the following sequence: 253 → 128 → 65 → 34 → 17 → 10 → 6 → 4 → 3. Once it reaches 3, it stays at 3, as \((3 + 3) / 2 = 3\). Thus, the final value of \verb|n| is 3.
+
+\end{document}
