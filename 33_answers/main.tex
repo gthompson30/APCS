@@ -26,12 +26,12 @@
 \begin{enumerate}
     \item[] GT's answer: Purple Hat by Sofi Tukker
     \item[] NM's answer: Black Hole Sun by Soundgarden
-    \item[] YG's answer: {fill this in, joshua}
+    \item[] YG's answer: Zoolookologie by Jean-Michel Jarre
 \end{enumerate}
 
 \subsection{Q1}
 
-Our answer: \textbf{A}
+Our answer: \textbf{B}
 
 \noindent\textit{Reasoning:} If you make a truth table like the following:
 \begin{center}
@@ -49,7 +49,7 @@ Our answer: \textbf{A}
  \hline
 \end{tabular}
 \end{center}
-This demonstrates that p must be true in order for the result to evaluate to true
+This demonstrates that p must be false in order for the result to evaluate to true
 
 \subsection{Q2}
 
@@ -72,9 +72,9 @@ Our answer: \textbf{C}
 
 \subsection{Q5}
 
-Our answer: \textbf{B}
+Our answer: \textbf{E}
 
-\noindent\textit{Reasoning:} There are two errors present in this code: \verb|instanceField| and \verb|instanceMethod()| can only be used in reference to a specific instance of the class, and each method uses both \verb|instanceField| and \verb|instanceMethod()|. Thus, 2 lines of code would need to be commented out from each method. 
+\noindent\textit{Reasoning:} In order to get this code to compile, we do not have to edit \verb|instanceMethod|. Java does not have a problem setting class fields and running class methods in an instance of that class. However, Java does have a problem calling instance methods and setting instance fields from a static context, because it's unclear which instance we want Java to use. Thus, we must remove two lines in one method but none in the other.
 
 
 \subsection{Q6}
@@ -87,20 +87,20 @@ Our answer: \textbf{C}
 
 Our answer: \textbf{A}
 
-\textit{Reasoning:} According to its definition on Wikipedia:
+\noindent\textit{Reasoning:} According to its definition on Wikipedia:
 "a namespace is a set of signs (names) that are used to identify and refer to objects of various kinds." In general, a namespace is an identifier for a piece of data.
 
 \subsection{Q8}
 
 Our answer: \textbf{D}
 
-\noindent\textit{Reasoning:} \verb|3.9 / 1.3| will by default return the \verb|double| value of \verb|3.0|. This won't be automatically converted to \verb|int|, because of concern of "lossy conversion". ( \textbf{Note:} The oher way around, where g is a \verb|double| and the value being assigned to g is an \verb|int| would be treated differently. See questions 12 and 18.)
+\noindent\textit{Reasoning:} \verb|3.9 / 1.3| will by default return the \verb|double| value of \verb|3.0|. This won't be automatically converted to \verb|int|, because of concern of "lossy conversion". ( \textbf{Note:} The other way around, where g is a \verb|double| and the value being assigned to g is an \verb|int| would be treated differently. See questions 12 and 18.)
 
 \subsection{Q9}
 
 Our answer: \textbf{D}
 
-\noindent\textit{Reasoning:} The code will not be able to compile, because the prefix for the classes are \verb|class| rather than \verb|public class|. This means that they will not be able to access eachother. Also, the file won't be able to run, because Java requires a \verb|public class| method in the file for it to be executable. 
+\noindent\textit{Reasoning:} The code will not be able to compile, because the prefix for the classes are \verb|class| rather than \verb|public class|. This means that they will not be able to access each other. Also, the file won't be able to run, because Java requires a \verb|public class| method in the file for it to be executable. 
 
 \subsection{Q10}
 
@@ -166,7 +166,7 @@ Our answer: \textbf{D}
 
 Our answer: \textbf{B}
 
-\noindent\textit{Reasoning:} As explained in question 12, The value of 160 falls within all of the ranges listed in Q12, except for the range of \verb|byte|, which can only handle values up to 127. Therefore, the code will be valid for datatype \verb|int|, \verb|short|, \verb|long|, and \verb|double| (I, III, IV, and V), just not \verb|byte| (IV).
+\noindent\textit{Reasoning:} As explained in question 12, on initial assessment, we can assign an integer, 160, to an \verb|int|, a \verb|byte|, a \verb|short|, or a \verb|long|, which are all integers, or a \verb|double|, which is a floating point number. Looking at ranges now, 160 falls within all of the ranges listed in Q12, except for the range of \verb|byte|, which can only handle values up to 127. Therefore, the code will be valid for datatype \verb|int|, \verb|short|, \verb|long|, and \verb|double| (I, III, IV, and V), just not \verb|byte| (IV).
 
 \subsection{Q19}
 
@@ -179,13 +179,13 @@ First, \verb|x| will be 123 and \verb|y| will be 0. Then, \verb|y| will increase
 
 Our answer: \textbf{D}
 
-\noindent\textit{Reasoning:} In order for \verb|meMaybe()| to fire, the first part of the statement, must be \verb|true|, so that Java gets to that part of the OR gate. If \(a > b > c\), then both parts of \((a==b) || !(c<=b)\) will be false, as \(a\) will not be equal to \(b\), and \(c\) won't not be less than or equal to \(c\), as it \textit{will} be less than \(b\). This means that if \(a < b < c\), the code will get to \verb|meMaybe()|, so it will be called.
+\noindent\textit{Reasoning:} In order for \verb|meMaybe()| to fire, the first two statements must be \verb|false|, so that Java gets to that part of the OR gate. If \verb|a==b| is \verb|false|, then \(a \neq b\). If \verb|!(c<=b)| is \verb|false|, then \(c \leq b\). The only option that satisfies both criteria is \(a \geq b \geq c\).
 
 \subsection{Q21}
 
 Our answer: \textbf{C}
 
-\noindent\textit{Reasoning:} This code is essentially incrementing \verb|sum|, \verb|p|, and \verb|q| until \verb|p| reaches 10, and in each iteration, incrementing \verb|sum| by \(p \% q\). First, \(p \% q\) will be incremented by 0 (\verb|3 % 1|), then incremented by 0 again (\verb|4 % 2|), then incremented by 2 (\verb|5 % 3|), then 0, then 2, then 2, then 2, then 2, and then 2 again. This will make for a total of 12, which will be the final value of \verb|sum|.
+\noindent\textit{Reasoning:} This code is essentially incrementing \verb|sum|, \verb|p|, and \verb|q| until \verb|p| reaches 10, and in each iteration adding \verb|sum| to \(p \% q\). First, \(p \% q\) will be incremented by 0 (\verb|3 % 1|), then incremented by 0 again (\verb|4 % 2|), then incremented by 2 (\verb|5 % 3|), then 0, then 2, then 2, then 2, then 2, and then 2 again. This will make for a total of 12, which will be the final value of \verb|sum|.
 
 \subsection{Q22}
 
@@ -203,6 +203,6 @@ Our answer: \textbf{C}
 
 Our answer: \textbf{C}
 
-\noindent\textit{Reasoning:} This code starts with \(n = 253\), and then adds 3 to it and halves it with integer division, 50 times. In the first iteration, \verb|n| becomes 128, becomes 65 in the second iteration, and follows the following sequence: 253 \rightarrow 128 \rightarrow 65 \rightarrow 34 \rightarrow 17 \rightarrow 10 \rightarrow 6 \rightarrow 4 \rightarrow 3. Once it reaches 3, it stays at 3, as \((3 + 3) / 2 = 3\). The final value of \verb|n| is 3.
+\noindent\textit{Reasoning:} This code starts with \(n = 253\), and then adds 3 to it and halves it with integer division, 50 times. In the first iteration, \verb|n| becomes 128, becomes 65 in the second iteration, and follows the following sequence: 253 → 128 → 65 → 34 → 17 → 10 → 6 → 4 → 3. Once it reaches 3, it stays at 3, as \((3 + 3) / 2 = 3\). The final value of \verb|n| is 3.
 
 \end{document}
