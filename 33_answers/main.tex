@@ -62,7 +62,7 @@ Our answer: \textbf{C}
 Our answer: \textbf{B}
 
 \noindent\textit{Reasoning:} The code tells us several things: 
-Firstly,numbers are being printed out in a line, starting with the number ten. Secondly, the number being printed reduces by 3 each time. This eliminates choices c, d, and e. Thirdly, the boolean expression for the loop is i>0, meaning that when i becomes less than 0, the loop will end. This means that answer D is incorrect, leaving us with B. 
+Firstly,numbers are being printed out in a line, starting with the number ten. Secondly, the number being printed reduces by 3 each time. This eliminates choices c, d, and e. Thirdly, the boolean expression for the loop is i $>$ 0, meaning that when i becomes less than 0, the loop will end. This means that answer D is incorrect, leaving us with B. 
 
 \subsection{Q4}
 
@@ -81,7 +81,7 @@ Our answer: \textbf{E}
 
 Our answer: \textbf{C}
 
-\noindent\textit{Reasoning:} Recursion, such as in the case of the factorial function, always relies on using the smallest possible cases of the same function to solve larger cases of that function. Therefore, recursion is a method in which the solution of a problem depends on smaller instances of the same problem. 
+\noindent\textit{Reasoning:} Recursion, such as in the case of the factorial function, always relies on using the smaller cases of the same function to solve larger cases of that function. Therefore, recursion is a method in which the solution of a problem depends on smaller instances of the same problem. 
 
 \subsection{Q7}
 
@@ -179,13 +179,13 @@ First, \verb|x| will be 123 and \verb|y| will be 0. Then, \verb|y| will increase
 
 Our answer: \textbf{D}
 
-\noindent\textit{Reasoning:} In order for \verb|meMaybe()| to fire, the first two statements must be \verb|false|, so that Java gets to that part of the OR gate. If \verb|a==b| is \verb|false|, then \(a \neq b\). If \verb|!(c<=b)| is \verb|false|, then \(c \leq b\). The only option that satisfies both criteria is \(a \geq b \geq c\).
+\noindent\textit{Reasoning:} In order for \verb|meMaybe()| to fire, the first two statements must be \verb|false|, so that Java gets to that part of the OR gate. If \verb|a==b| is \verb|false|, then \(a \neq b\). If \verb|!(c<=b)| is \verb|false|, then \(c \leq b\). The only option that satisfies both criteria is \(a > b > c\).
 
 \subsection{Q21}
 
 Our answer: \textbf{C}
 
-\noindent\textit{Reasoning:} This code is essentially incrementing \verb|sum|, \verb|p|, and \verb|q| until \verb|p| reaches 10, and in each iteration adding \verb|sum| to \(p \% q\). First, \(p \% q\) will be incremented by 0 (\verb|3 % 1|), then incremented by 0 again (\verb|4 % 2|), then incremented by 2 (\verb|5 % 3|), then 0, then 2, then 2, then 2, then 2, and then 2 again. This will make for a total of 12, which will be the final value of \verb|sum|.
+\noindent\textit{Reasoning:} This code is essentially incrementing  \verb|p|, and \verb|q| by 1 until \verb|p| reaches 10, and in each iteration adding \(p \% q\) to \verb|sum|. Thus, \verb|sum| will be equal to \(3  \bmod  1 + 4  \bmod 2 + 5 \bmod 3 + 6 \bmod 4 + 7 \bmod 5 + 8 \bmod 6 + 9 \bmod 7 + 10 \bmod 8 = 0 + 0 + 2 * 6 = 12\)
 
 \subsection{Q22}
 
@@ -197,12 +197,12 @@ Our answer: \textbf{C}
 
 Our answer: \textbf{C}
 
-\noindent\textit{Reasoning:} The code given essentially takes an array of \verb|String|s, and returns the same array but with the first characters of the first two items swapped. It does this by creating a \verb|temp| variable to store the first character of the first item. Then, it sets the first item to the concatenation of the first char of the second item and the rest of the first item. It then does the reverse for the second item, setting it to the first item of the first character (stored in \verb|temp|) followed by the rest of the second item.
+\noindent\textit{Reasoning:} The code essentially takes an array of \verb|String|s, and returns the same array but with the first characters of the first two items swapped. It does this by creating a \verb|temp| variable to store the first character of the first item. Then, it sets the first item to the concatenation of the first character of the second item and the rest of the first item. It then does the reverse for the second item, setting it to the first item of the first character (stored in \verb|temp|) followed by the rest of the second item.
 
 \subsection{Q24}
 
 Our answer: \textbf{C}
 
-\noindent\textit{Reasoning:} This code starts with \(n = 253\), and then adds 3 to it and halves it with integer division, 50 times. In the first iteration, \verb|n| becomes 128, becomes 65 in the second iteration, and follows the following sequence: 253 → 128 → 65 → 34 → 17 → 10 → 6 → 4 → 3. Once it reaches 3, it stays at 3, as \((3 + 3) / 2 = 3\). The final value of \verb|n| is 3.
+\noindent\textit{Reasoning:} This code starts with \(n = 253\), and then adds 3 to it and halves it with integer division, 50 times. In the first iteration, \verb|n| becomes 128, which becomes 65 in the second iteration. The value of \verb|n| follows the following sequence: 253 → 128 → 65 → 34 → 17 → 10 → 6 → 4 → 3. Once it reaches 3, it stays at 3, as \((3 + 3) / 2 = 3\). Thus, the final value of \verb|n| is 3.
 
 \end{document}
