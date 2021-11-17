@@ -1,11 +1,24 @@
 /*****************************************************
- * Clyde "Thluffy" Sinclair
- * APCS pd00
+ * Team discordDucks (Gabriel Thompson, Kartik Vanjani, Marcus Wu)
+ * APCS pd08
  * HW38 -- Shmoney
- * 2021-11-18
- *
+ * 2021-11-17
+ * time spent: 0.5hrs
+ * 
  * class Slots
- * skeleton
+ * completed skeleton
+ * 
+ * DISCO:
+ *  - Any three fruits that are the same yield a jackpot
+ *  - In order to detect for equality between three separate Strings (a, b, c), you must
+ *    check if a.equals(b) && b.equals(c)
+ * 
+ * QCC:
+ *  - How many times were we supposed to swap for spinOnce()? 
+ *  - Why was the _fruits variable named with an underscore? Isn't java case-sensitive?
+ *  - Is there a better way to write tab indents for something like toString(). Team
+ *    walrus suggested using "\t".
+ * 
  *****************************************************/
 
 public class Slots {
@@ -15,14 +28,10 @@ public class Slots {
     "lime", "lime", "lime", 
     "lemon", "lemon", "lemon", 
     "cherry", "cherry", "cherry",
-    /*
-      add extra fruits until your heart is content...
-      Some suggestions:
     "orange", "orange", "orange", 
     "grapefruit", "grapefruit", "grapefruit", 
     "tangerine", "tangerine", "tangerine", 
     "ugli", "ugli", "ugli", 
-    */
     "peach", "peach", "peach"
   };
 
@@ -116,7 +125,7 @@ public class Slots {
   {
     if (jackpot())
       return true;
-    if (!_fruits[0].equals(_fruits[1]) && !_fruits[0].equals(_fruits[2]) && !_fruits[2].equals(_fruits[1]) {
+    if (!_fruits[0].equals(_fruits[1]) && !_fruits[0].equals(_fruits[2]) && !_fruits[2].equals(_fruits[1]))
       return true;
     return false;
     //boolean retBoo = ?
@@ -130,7 +139,7 @@ public class Slots {
   public static void main( String[] args ) {
     //usage: move bar below down 1 line at a time to test functionality...
 
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     Slots machine01 = new Slots();
     Slots machine02 = new Slots();
 
