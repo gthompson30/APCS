@@ -1,0 +1,43 @@
+Gabriel Thompson
+APCS
+HW38 -- Spin Class
+2021-11-18
+time spent: 0.Xhrs
+
+Types of errors:
+ * Compile-time error -- An error that prevents the Java code from compiling. Indicates that the basic
+   syntax of the program is incorrect.
+ * Run-time error -- An error that occurs during the execution of the program. Indicates that the code is
+   doing something that the computer can't process
+ * Logical error -- A term used to describe the program doing something unintended, rather than a code error
+   being yielded.
+
+How to fix compile-time errors:
+ * Look at the first error (i.e. or the one that could be causing the others)
+ * Acknowledge that not the number of error messages ≠ the number of errors
+ * Check for common errors (not using semicolons, referencing static from non-static, etc.), listed below.
+ * Use critical thinking to decide if the compiler is giving you good error solutions
+
+How to fix run-time errors:
+ * TBW
+
+How to fix logic errors:
+ * TBW
+
+Go(o)d advice:
+ * Use line numbers / file names to identify the place in the code that causes the error
+ * Indent the program properly, so it's easier to search for errors
+ * print out values of variables liberally (and use visualizer)
+ * Make sure you're actually compiling the file you're editing. Check this by making obvious errors and
+   seeing if appropriate compilation error is outputted
+
+Trickiest error messages:
+ * Parenthesis / bracket misalignment
+ * Case-sensitivity
+ * Not using semicolon / using semicolon after bracket
+ * Not using double quotes for Strings and single quotes for chars
+ * Not having var name on left and value on right
+ * Function/constructor arguments in the wrong order
+ * Wrong return type / not returning something for a non-void return type
+ * Use dot notation when invoking static methods
+ * Only reference static from static and you must use "this." to refer to non-static from static
