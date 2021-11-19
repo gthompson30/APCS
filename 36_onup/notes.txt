@@ -2,7 +2,7 @@ Gabriel Thompson
 APCS
 HW38 -- Spin Class
 2021-11-18
-time spent: 0.Xhrs
+time spent: 0.8hrs
 
 Types of errors:
  * Compile-time error -- An error that prevents the Java code from compiling. Indicates that the basic
@@ -19,19 +19,58 @@ How to fix compile-time errors:
  * Use critical thinking to decide if the compiler is giving you good error solutions
 
 How to fix run-time errors:
- * TBW
+ * To fix infinite loops, use print statements around where you think the error is to see why the loop isn't
+   terminating. However, don't use so many that you get confused by the output.
+     - Write when the program is calling functions, to see if it's running into a recursive error
+ * Sort of hard to generalize because this varies vastly on a case-by-case basis
 
 How to fix logic errors:
- * TBW
+ * Think about what the code is supposed to do, and use print statements to determine why it is doing
+   something different from that
+ * Common causes of errors include dividing/multiplying by the wrong datatype (int/double), using == to
+   compare classes instead of .equals(), and mistaking = for ==.
+ * Break long and cluttered expressions into multiple lines, so that you can understand better what the
+   computer is doing, step-by-step, and so that error messages are more precise.
+ * Use println instead of print to diagnose errors.
+ * Just chill bro
+ * Get other people to look at your code (via Piazza)
+ * Try explaining your code to your ducky
+ * Be very happy if/when you fix it
 
 Go(o)d advice:
  * Use line numbers / file names to identify the place in the code that causes the error
  * Indent the program properly, so it's easier to search for errors
- * print out values of variables liberally (and use visualizer)
+ * Use diagnostic print statements to pinpoint the error
  * Make sure you're actually compiling the file you're editing. Check this by making obvious errors and
    seeing if appropriate compilation error is outputted
 
-Trickiest error messages:
+Error message dictionary:
+ * NullPointerException - you are accessing a variable that has not been instantiated (value is null)
+     - FIX: Ask yourself: Am I referring to the wrong variables? If so, make sure that you are using the
+            correct variables for the application. If you ARE using the right variable, print out the
+            contents of the variable you're trying to access, and ask yourself what the value should be,
+            and ask yourself where in the code it would have been set to that value. Retrace why the variable
+            is not being set to that value (the reason varies greatly on a case-by-case basis).
+ * ArrayIndexOutOfBoundsException - you are trying to access an array index not within the 0 ≤ i ≤ length-1
+     - FIX: Print out the length of the array you are trying to call, and the index you are trying to get,
+            and use diagnostic print statements or other solutions to find how those values got that way.
+            A common cause of this exception is off-by-one errors. For example, if you have an array of
+            length 5, to get the last element, you must get array[4], not array[5]. More generally, you must
+            do array[array.length - 1] to get the last value for any variable "array", because of 0-indexing.
+ * StackOverflowError - the stack size in your program has exceeded a pre-determined limit
+     - FIX: Try to figure out why the function is calling itself as many times as it is. Most likely, this
+            is because it's not reaching a base case. To diagnose this, print out the values of the variables
+            that determine if it's a base case, and see why they aren't reaching an exit condition.
+ * FileNotFoundException - a file referred to in the program does not exist
+     - FIX: Use the error message to help you understand more, as it will state the name of the file. You may
+            have put the file in the wrong directory relative to your program, so make sure that they are in
+            file locations on your computer that make sense to you.
+ * ArithmeticException - there was in error in doing some sort of math
+     _ FIX: The most common cause is dividing by zero. If it's not that, look at the math that you're doing
+            and make sure that you're using plenty of parenthesis so that it isn't an order of operations
+            error.
+
+Common mistakes:
  * Parenthesis / bracket misalignment
  * Case-sensitivity
  * Not using semicolon / using semicolon after bracket
