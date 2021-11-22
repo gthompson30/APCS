@@ -1,13 +1,24 @@
 public class Monster {
-	int hp = 20;
+	public int health = 20;
+	public boolean alive = true;
+	public int damage;
 
+	// we will probably not need this
 	public Monster() {
 	}
-
+	public void damage(int hurtPoints) {
+                health -= hurtPoints;
+                if (health <= 0)
+                        alive = false;
+        }
 	public int attack(Protagonist a) {
-		return (int) (Math.random() * 6);
+		damage = (int) (Math.random() * 6); // random int in random [0, 5)
+		a.health -= damage;
+		if (a.health < 0)
+			a.alive = false;
+		return damage;
 	}
 	public boolean isAlive() {
-		return hp > 0;
+		return alive;
 	}
 }
