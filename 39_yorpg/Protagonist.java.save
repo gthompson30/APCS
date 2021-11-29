@@ -1,0 +1,8 @@
+public class Protagonist {
+	public Protagonist(String name) {}
+	public void isAlive() {}
+	public void specialize() {}
+	public void normalize() {}
+	public void attack() {}
+	public void getName() {}
+}
