@@ -11,13 +11,32 @@
 
 public class TwoDimArray
 {
+
+  public static void printArray( int[] a ) {
+    System.out.print("{");
+
+    for (int i = 0; i < a.length; i++) {
+      System.out.print(a[i]);
+      if (i < a.length - 1)
+        System.out.print(", ");
+    }
+    System.out.print("}");
+  }
+
   //postcond: prints each row of 2D int array a on its own line
   //          uses a FOR loop
   public static void print1( int[][] a )
   {
-    // YOUR IMPLEMENTATION HERE
+    System.out.println("{");
+    for (int subIndex = 0; subIndex < a.length; subIndex++) {
+      System.out.print("  ");
+      printArray(a[subIndex]);
+      if (subIndex < a.length - 1)
+        System.out.print(",");
+      System.out.println();
+    }
+    System.out.println("}");
   }
-
 
   //postcond: prints each row of 2D int array a on its own line
   //          uses a FOREACH loop
@@ -30,6 +49,7 @@ public class TwoDimArray
   //postcond: returns sum of all items in 2D int array a
   public static int sum1( int[][] a )
   {
+    return 0;
     // YOUR IMPLEMENTATION HERE
   }
 
@@ -38,6 +58,7 @@ public class TwoDimArray
   //          * uses helper fxn sumRow
   public static int sum2( int [][] m )
   {
+    return 0;
     // YOUR IMPLEMENTATION HERE
   }
 
@@ -46,6 +67,7 @@ public class TwoDimArray
   //          uses a FOR loop
   public static int sumRow( int r, int[][] a )
   {
+    return 0;
     // YOUR IMPLEMENTATION HERE
   }
 
@@ -62,13 +84,13 @@ public class TwoDimArray
 
   public static void main( String [] args )
   {
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       int [][] m1 = new int[4][2];
       int [][] m2 = { {2,4,6}, {3,5,7} };
       int [][] m3 = { {2}, {4,6}, {1,3,5} };
       print1(m1);
       print1(m2);
       print1(m3);
+      /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       print2(m1);
       print2(m2);
       print2(m3);
