@@ -2,7 +2,7 @@
 // APCS pd8
 // HW47 -- Guess Again
 // 2021-12-14t
-// time spent: _ hrs
+// time spent: 0.5 hrs
 
 /***
  * class GuessNumber -- fun fun fun!
