@@ -2,28 +2,35 @@
 discordDucks (Gabriel Thompson + Iggy, Kartik Vanjani + Krrish, Marcus Wu + Nat)
 APCS pd8
 HW49 -- Rational Standard Compliance
-2021-12-01
+2021-12-22
 time spent: 0.5hrs
 ***/
 
-/***
+/*********************************************************************
 
 DISCO:
- - "double" is a more accurate way of storing floating-point values, and therefore is our returntype of
-   choice for the function floatValue()
- - You need to check if the resulting denominator will be zero for both multiply() and divide(), to
-   make sure that each method doesn't set the ratio the class stores to an invalid fraction
+ - In order to write a method that takes in a Object, but only wants a Rational, you
+   need to check if it's a Rational before preceeding, and typecast it when using it.
+      i. More concisely, "typecast your input"
+ - If one of your test cases involves an error being printed out, that must come last
+   because otherwise, it will prevent the rest of the tests cases from running.
+ - The "float" primitive does not have a built-in compareTo() method.
 
 QCC:
- - Is there a better way to handle making sure that you don't divide by 0? It makes the code more ugly
-   because the entire function has to be within an if/else statement
- - What is the harm of making instance variables (particularily the ones in this case) public, what is
-   the advantage of keeping them private?
- - It seems inefficient to create so many instances of "Rational" for the test cases -- is there a
-   cleaner or more efficient way of doing that?
- - Does Java have a built in ratio object similar to this one?
+ - It doesn't seem like our "throw" statement is working, given that it's not throwing
+   the error message that we wrote in.
+ - What is the point of using the Comparable interface? We tried removing the
+   "implements Comparable", and the program still worked and the "throw" statement
+   actually functioned. Why implement Comparable?
+     i. The assignment never explicitly says to implement Comparable, it just says to
+        "bring [the class] into compliance with the Comparable interface". Does this
+        mean we actually need to implement it or not (QAF post to come)
+ - Why is equals() not part of the Comparable interface? It seems like it logically
+   should be, and it's also mentioned in ap251/library/resources/api_equals.pdf.
+     i. equals() is not listed as a part of the Comparable interface on the Java API:
+        https://www2.cs.duke.edu/csed/ap/subset/doc/ap/java/lang/Comparable.html
 
-***/
+*********************************************************************/
 
 public class Rational implements Comparable {
 	private int numerator;
@@ -53,30 +60,46 @@ public class Rational implements Comparable {
 		return (float) numerator / denominator;
 	}
 
-	public float compareTo(Object r) {
-		if (!(r instanceof Comparable)) {
-			throw new ClassCastException("\nLol enter a Rational u noob");
-		}
-		float thisVal = floatValue();
-		float otroVal = r.floatValue();
-		return thisVal.compareTo(otroVal);
-	}
-
-	public void multiply(Rational r) {
-		if (r.denominator == 0)
-			System.out.println("ERROR: Cannot divide by 0");
-		else {
-			numerator *= r.numerator;
-			denominator *= r.denominator;
-		}
-	}
-
-	public void divide(Rational r) {
-		if (r.numerator == 0)
+        public void multiply(Rational r) {
+                if (r.denominator == 0)
                         System.out.println("ERROR: Cannot divide by 0");
                 else {
-			numerator *= r.denominator;
-			denominator *= r.numerator;
+                        numerator *= r.numerator;
+                        denominator *= r.denominator;
+                }
+        }
+
+        public void divide(Rational r) {
+                if (r.numerator == 0)
+                        System.out.println("ERROR: Cannot divide by 0");
+                else {
+                        numerator *= r.denominator;
+                        denominator *= r.numerator;
+                }
+        }
+
+	// HW49 additions from now until main()
+	public int compareTo(Object r) {
+		if (r instanceof Comparable) {
+			float thisVal = this.floatValue();
+			float otroVal = ((Rational) r).floatValue();
+
+			if (thisVal == otroVal) { return 0; }
+			if (thisVal >  otroVal) { return 1; }
+			return -1;
+		} else {
+			throw new ClassCastException("\nLol enter a Rational u noob");
+		}
+	}
+
+	public boolean equals(Object r) {
+		if (r instanceof Comparable) {
+			float thisVal = this.floatValue();
+			float otroVal = ((Rational) r).floatValue();
+
+			return thisVal == otroVal;
+		} else {
+			throw new ClassCastException("\nLol enter a Rational u noob");
 		}
 	}
 
@@ -116,5 +139,24 @@ public class Rational implements Comparable {
 		Rational n = new Rational();
 		m.divide(n);
 		System.out.println(m + " ...should yield an error\n");
+
+		// ADDITIONS FROM HW49
+		System.out.println("\ncompareTo() test cases:");
+		Rational o = new Rational(5, 6);
+		Rational p = new Rational(4, 3);
+		System.out.println(o.compareTo(p) + " ...should be -1");
+		o = new Rational(4, 3);
+		System.out.println(o.compareTo(p) + " ...should be 0");
+		o = new Rational(15, 7);
+		System.out.println(o.compareTo(p) + " ...should be 1");
+
+		System.out.println("\nequals() test cases:");
+		o = new Rational(8, 6);
+		System.out.println(o.equals(p) + " ...should be true");
+		o = new Rational(8, 7);
+		System.out.println(o.equals(p) + " ...should be false");
+
+		System.out.println("\nFinal compareTo() test case:\nTHE FOLLOWING SHOULD BE AN ERROR:\n");
+		System.out.println(o.compareTo("lol"));
 	}
 }
