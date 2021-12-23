@@ -32,7 +32,7 @@ QCC:
 
 *********************************************************************/
 
-public class Rational implements Comparable {
+public class Rational {//implements Comparable {
 	private int numerator;
 	private int denominator;
 
@@ -80,7 +80,7 @@ public class Rational implements Comparable {
 
 	// HW49 additions from now until main()
 	public int compareTo(Object r) {
-		if (r instanceof Comparable) {
+		if (r instanceof Rational) {
 			float thisVal = this.floatValue();
 			float otroVal = ((Rational) r).floatValue();
 
@@ -93,7 +93,7 @@ public class Rational implements Comparable {
 	}
 
 	public boolean equals(Object r) {
-		if (r instanceof Comparable) {
+		if (r instanceof Rational) {
 			float thisVal = this.floatValue();
 			float otroVal = ((Rational) r).floatValue();
 
