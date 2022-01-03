@@ -103,3 +103,4 @@ public class Rational {//implements Comparable {
 		}
 	}
 }
+
