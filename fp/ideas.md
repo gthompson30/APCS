@@ -1,3 +1,5 @@
+A copy/paste of my "ideas" notes document I have on my phone. >75% of everything in here will make absolutely no sense for the final project, maybe 5-10% are feasible options.
+
 ## Ideas for stuff:
 
 ### Video Games:
