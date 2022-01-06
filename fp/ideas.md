@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+A copy/paste of my "ideas" notes document I have on my phone. >75% of everything in here will make absolutely no sense for the final project, maybe 5-10% are feasible options.
+
+>>>>>>> c17026d961c9d457b506a4ebb41d768334d665c0
 ## Ideas for stuff:
 
 ### Video Games:
