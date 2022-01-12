@@ -25,7 +25,7 @@ public class MySorts {
         }
     }
 
-    public static ArrayList void insertionSort(ArrayList < Comparable > data) {
+    public static void insertionSort(ArrayList < Comparable > data) {
         for (int partition = 0; partition < data.size() - 1; partition++) {
             for (int i = partition + 1; i > 0; i--) {
                 if ((data.get(i)).compareTo(data.get(i - 1)) < 0) {
