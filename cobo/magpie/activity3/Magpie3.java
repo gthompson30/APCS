@@ -1,4 +1,11 @@
 /**
+
+// Nacho Patcho (Gabriel Thompson and Iggy, Faiza Huda, Truthful Tom and Huebert, Jacob Ng and PreGuac)
+// APCS pd8
+// HW56 -- Turing Training Wheels
+// 2022-01-12w
+// time spent: 0.4hrs
+
  * A program to carry on conversations with a human user.
  * This version: 
  * <ul><li>
