@@ -1,0 +1,53 @@
+Team Tame Meat Mate Meta
+APCS pd8
+L05 -- pulling it together
+2022-02-03r
+time spent: 0.7 hrs
+
+
+DISCO
+------------------------------------------------
+* Nothing so far (work in progress)
+================================================
+
+
+QCC
+------------------------------------------------
+* Does the isLocalMode() function take in the index to check as the input? The
+  description of it suggests it does, but the driver code suggests otherwise.
+* Our histogram code is not currently working.
+================================================
+
+MISC
+------------------------------------------------
+* 
+================================================
+
+
+TIME COMPLEXITIES
+------------------------------------------------
+> StatPrinter()
+   - Time complexity: O(n), where n is the size of data
+   - Rationale: It is iterating through the 1-dimensional array a constant
+                number of times. Therefore, it is in linear time.
+
+> max()
+   - Time complexity: O(n), where n is the size of data
+   - Rationale: The function only loops through the array once, therefore
+                the time complexity is linearly proportional to the size
+
+> isLocalMode()
+   - Time complexity: O(1)
+   - Rationale: There is no loops, and all of the operations are constant-time
+
+> getLocalModes()
+   - Time complexity: O(n), where n is the size of _frequency
+   - Rationale: It is iterating through every item in frequency, and
+                in each iteration, is running the constant-time
+                isLocalMode() function.
+
+> printHistogram()
+   - Time complexity: O(n), where n is the size of data
+   - Rationale: It is running the innermost for loop the same amount of times
+                as the size of data.
+================================================
