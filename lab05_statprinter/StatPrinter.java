@@ -1,8 +1,8 @@
-// Clyde "Thluffy" Sinclair
-// APCS pd0
+// Team Tame Meat Mate Meta
+// APCS pd8
 // L05 -- pulling it together
 // 2022-02-03r
-// time spent:  hrs
+// time spent: 1.8 hrs
 
 /**
    An AP-style question, for practice...
@@ -72,11 +72,11 @@ public class StatPrinter
     int maxValue = max(data);
     _frequency = new ArrayList<Integer>();
 
-    for (int i = 0; i < maxValue; i++) {
+    for (int i = 0; i <= maxValue; i++) {
       _frequency.add(0);
     }
     for (int i = 0; i < data.size(); i++) {
-      _frequency.set(data.get(i) - 1, data.get(data.get(i) - 1) + 1);
+      _frequency.set(data.get(i), _frequency.get(data.get(i)) + 1);
     }
   }
 
@@ -152,10 +152,25 @@ public class StatPrinter
   {
     for (int barNum = 0; barNum < _frequency.size(); barNum++) {
       System.out.print(barNum + " : ");
-      for (int starNum = 0; starNum < (_frequency.get(barNum) * (longestBar / max(_frequency))); starNum++) {
+      float ratio = (float) longestBar / max(_frequency);
+
+      for (int starNum = 0; starNum < (int) (_frequency.get(barNum) * ratio); starNum++) {
 	System.out.print("*");
       }
       System.out.println();
     }
   }
+
+  // test function, used for testing test test testy test test test
+    public void printFrequency() {
+      System.out.print("{");
+      for (int i = 0; i < _frequency.size(); i++) {
+	System.out.print(_frequency.get(i));
+	if (i < _frequency.size() - 1) {
+	  System.out.print(", ");
+	}
+      }
+      System.out.println("}");
+    }
+
 }//end class StatPrinter

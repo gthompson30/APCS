@@ -1,8 +1,8 @@
-// Clyde "Thluffy" Sinclair
-// APCS pd0
+// Team Tame Meat Mate Meta
+// APCS pd8
 // L05 -- pulling it together
 // 2022-02-03r
-// time spent:  hrs
+// time spent: 1.8 hrs
 
 /***
  * class StatPrinterApp
@@ -56,6 +56,13 @@ public class StatPrinterApp
     al2.add(3);
 
     StatPrinter sp2 = new StatPrinter( al2 );
+
+    // TESTS... rendered null because it works
+    // System.out.println(al2.toString());
+    // sp2.printFrequency();
+    // sp1.printFrequency();
+    // System.out.print( "freq: " );
+    // sp2.printFrequency();
 
     System.out.println( "sp2 testing: " );
     System.out.println( "al2 max: " + sp1.max(al2) );

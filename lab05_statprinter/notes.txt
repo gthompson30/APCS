@@ -2,12 +2,12 @@ Team Tame Meat Mate Meta
 APCS pd8
 L05 -- pulling it together
 2022-02-03r
-time spent: 0.7 hrs
+time spent: 1.8 hrs
 
 
 DISCO
 ------------------------------------------------
-* Nothing so far (work in progress)
+* isLocalMode() can be written entirely within one return statement.
 ================================================
 
 
@@ -15,16 +15,22 @@ QCC
 ------------------------------------------------
 * Does the isLocalMode() function take in the index to check as the input? The
   description of it suggests it does, but the driver code suggests otherwise.
-* Our histogram code is not currently working.
+* Does printHistogram() run in O(n) or O(n^2) time? This was obviously @508
+  on Piazza, but it still somewhat confuses us.
+* What exactly is the purpose of the MISC section? It seems like everything
+  that could go there could just go under QCC, because that includes comments.
+* Gabriel forgot to do HW59, does this mean that his repo will not be checked?
+  It is not currently in edihhh
 ================================================
 
 MISC
 ------------------------------------------------
-* 
+* We weren't sure about whether to put the time complexities here or in 
+  StatPrinter.java. We put them in both.
 ================================================
 
 
-TIME COMPLEXITIES
+TIME COMPLEXITIES (also listed in StatPrinter.java)
 ------------------------------------------------
 > StatPrinter()
    - Time complexity: O(n), where n is the size of data
