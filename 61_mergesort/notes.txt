@@ -1,0 +1,35 @@
+ Team Tame Meat Mate Meta: Gabriel Thompson, Kartik Vanjani
+ APCS pd8
+ HW60 -- A Termite is-a Turtle, a Thinker is-a Turtle
+ 2022-02-03r
+ time spent: 0.5 hrs
+ 
+ REFLECTION: 
+ - The activity in class today was actually really fun. 
+ - It was a more hands on experience and it was fun to have an activity like that teach us the merging sort algorithm.
+ - Although the class did not succeed, we did make good progress towards the end.
+ - The fact that we should have been left with one card at the end proved to be pretty self-doable.
+ 
+ OBSERVABLES:
+ - At the end, when you return cards to where they came from, you eventually get them back to the people who got the decks.
+ - The people who get the deck have to give away cards, but then still end up with one card that they can sort later on.
+ - A way to clean up the process is to clearly state that the people who got the decks to start should split it immediately and give it all away.
+ - It required significant parallel processing and memory to execute the sorting algorithm.
+ 
+ DISCO:
+ - It was a rough process 100%.
+ - Understanding it initially is hard.
+ - The ending up with one card is something that eventually just happens.
+ - Not having a card is not the worse thing because it is basically like an unused processor. 
+ 
+ QCC:
+ - Does the last person sort the cards?
+ - Why should everyone end up with one card?
+ 
+ THINKER FIRMWARE:
+ - GIVE
+ You give away cards if you initially got the deck to begin with.
+ - TAKE
+ You take cards if you have no cards and you need to get at least one. 
+ - MERGE
+ You "merge" two received decks, through The Diana Algorithm™, where you compare the first item from each deck, eliminate it, and move it to a third stack. You repeat this process until one of the decks is empty, at which point you add the remaining cards to the third stack. This third stack is your merged deck.
