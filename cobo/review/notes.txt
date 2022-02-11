@@ -1,3 +1,4 @@
+ACTIVIDAD UNO
 1a. public static double sentimentVal( String word )
 1b. String word
 1c. double
@@ -11,4 +12,11 @@ beautiful 2.76
 3b. No, because there isn't a function named sentimentVal() that includes a argument of type String
 3c. No, because there isn't a function named sentimentVal() that takes in two String arguments
 
-4. 
+ACTIVIDAD DOS
+4. In our implementation, we first split the file content into each component word, and store this in an array.
+   We also initialize a "counter" that stores the current sentiment value total. We then iterate through each
+   item of this array (each word). In each iteration, we store a copy of the word without punctuation, using
+   the removePunctuation() function, calculate its sentimentVal(), and add this to the total sentiment value.
+   We then return the total sentiment value at the end of the function.
+
+5. No, they do not. Longer reviews get measured as more extremely positive or negative.
