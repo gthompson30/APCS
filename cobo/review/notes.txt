@@ -1,0 +1,5 @@
+1a. public static double sentimentVal( String word )
+1b. String word
+1c. double
+
+2a. 

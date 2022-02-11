@@ -119,6 +119,21 @@ public class MergeSort
   }
   //---------------------------------------------------
 
+  public static void bubbleSortV( int[] data )
+  {
+    for (int passNum = 0; passNum < data.length - 1; passNum++) {
+      for (int index = data.length - 1; index > passNum; index--) {
+        Comparable previous = data[index - 1];
+        Comparable current = data[index];
+        int comparison = previous.compareTo(current);
+
+        if (comparison > 0) {
+          data[index] = previous;
+          data[index - 1] = current;
+        }
+      }
+    }
+  }
 
   //main method for testing
   public static void main( String [] args )
@@ -162,6 +177,11 @@ public class MergeSort
         firstSample[i] = sortedArr8[i];
       printArray(firstSample);
 
+      System.out.println("SORTED! In only " + (endTime - startTime) + "ms.");
+
+      startTime = System.currentTimeMillis();
+      bubbleSortV(arr8);
+      endTime = System.currentTimeMillis();
       System.out.println("SORTED! In only " + (endTime - startTime) + "ms.");
     /*~~~~~~~~~~~~~~ Ye Olde Tester Bar ~~~~~~~~~~~~~~
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
