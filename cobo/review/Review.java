@@ -167,9 +167,8 @@ public class Review {
     System.out.println(sentimentVal("fun"));
     System.out.println(sentimentVal("amazing"));
     System.out.println(sentimentVal("spectacular"));
-    System.out.println(sentimentVal("sentiment"));
-    System.out.println(sentimentVal("fantastical"));
     System.out.println(sentimentVal("ugly"));
     System.out.println(sentimentVal("hideous"));
+    System.out.println(sentimentVal("wonderful"));
   }
 }
