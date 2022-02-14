@@ -1,3 +1,9 @@
+Team Tame Meat Mate Meta (Kartik Vanjani and Gabriel Thompson)
+APCS
+L06 -- Read/Review/Expand
+2022-02-11
+time spent: 3.0 hours
+
 ACTIVITY 1
 -----------
 1a. public static double sentimentVal( String word )
@@ -91,5 +97,56 @@ ACTIVITY 4
 6. Because the asterisk is not a part of the word
 7. A website who wanted to appear better than they are could replace any positive reviews with more positive
    reviews using this function.
-6. 
-7. 
+6. Because it is not part of the word
+7. Companies could use it on their own website to modify their own positive reviews to be even better. This
+   would allow them to take already positive reviews and make them seem even more positive.
+
+
+
+ACTIVITY 5
+-----------
+1. We chose it because Wordle is a fun game which we decided was not super difficult to replicate in Java,
+   and definitely used Strings. It also definitely fulfilled all of the requirements.
+
+2. First, we found the online list of all valid wordle words that are not potential wordle answers, and the
+   list of all possible wordle answers (they are different), put them into two files (answers.txt and
+   allowed.txt), and wrote code that reads from them to put the words in an array. We then implemented the
+   main game loop and created some basic variables. We used the Scanner to scan for user input. Once we had
+   the basic game down, we added conditionals to repeatedly take in inputs until the user enters something
+   valid (this used a "do/while" loop which gabriel knew about, https://www.tutorialspoint.com/java/java_do
+   _while_loop.htm). It just repeats the loop once, and then checks the conditional for each next time.
+
+3. public static boolean valid(String w)
+   This functions returns whether or not the input w (for "word", the loop uses "word" already so we couldn't
+   reuse the name) is a valid wordle word to enter. Because it is a word, it is a String. We made the method
+   static because it is being called directly from the class rather from an instance of the class Wordle.
+
+4. a. printSelection(selection, answer);
+
+   The first method is printing out the Wordle analysis for the entered word, with regards to the correct
+   word. Nothing is returned, the output is directly printed.
+
+   b. } while (!valid(selection));
+
+   The second method returns whether a given word is a valid wordle word. It does this by checking through
+   the "allowed" array and the "correct" array to see if the word appears anywhere in there. A boolean is
+   returned, which represents whether the argument is valid.
+
+5. while (guesses < 6 && !selection.equals(answer)) {
+
+   This code could also be written as:
+
+   while (guess < 6) {
+     while (!selection.equals(answer)) {
+
+6. for (String word : ALLOWED) {
+
+   This code iterates through every String in ALLOWED, using the variable name "word". Being a "DO WHILE"
+   loop, it handles all of the indexing you would need to otherwise do with plain for loops. However, if
+   you wanted to use a plain for loop, you could write:
+
+   String word;
+   for (int i = 0; i < ALLOWED.length; i++) {
+     word = ALLOWED[i];
+
+   This would have the same result.
