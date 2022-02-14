@@ -28,17 +28,15 @@ public class Review {
       input.close();
     }
     catch(Exception e){
+      System.out.println(e);
       System.out.println("Error reading or parsing cleanSentiment.csv");
     }
-  
   
   //read in the positive adjectives in postiveAdjectives.txt
      try {
       Scanner input = new Scanner(new File("positiveAdjectives.txt"));
       while(input.hasNextLine()){
-        String temp = input.nextLine().trim();
-        System.out.println(temp);
-        posAdjectives.add(temp);
+        posAdjectives.add(input.nextLine().trim());
       }
       input.close();
     }
@@ -119,7 +117,7 @@ public class Review {
    */
   public static String removePunctuation( String word )
   {
-    while(word.length() > 0 && !Character.isAlphabetic(word.charAt(0)))
+    while(word.length() > 0 && !Character.isAlphabetic(word.charAt(0)) && word.charAt(0) != '*')
     {
       word = word.substring(1);
     }
@@ -155,6 +153,7 @@ public class Review {
    */
   public static String randomAdjective()
   {
+    // THIS IS WRONG BECAUSE IT ASSUMES THAT THERE ARE THE SAME AMOUNT OF POSITIVE AS NEGATIVE ADJECTIVES
     boolean positive = Math.random() < .5;
     if(positive){
       return randomPositiveAdj();
@@ -162,6 +161,14 @@ public class Review {
       return randomNegativeAdj();
     }
   }
+
+  // A BETTER FUNCTION THAN THE CURRENT RANDOMADJECTIVE()
+  /*public static String randomAdjective() {
+    if (Math.random() <= posAdjectives.size()/(negAdjectives.size() + posAdjectives.size())) { // if positive adjective
+      return posAdjectives.get((int) Math.random() * posAdjectives.size());
+    }
+    return negAdjectives.get((int) Math.random() * negAdjectives.size());                      // if negative adjective
+  }*/
 
   public static double totalSentiment( String fileName) {
     String content = textToString(fileName);
@@ -185,6 +192,43 @@ public class Review {
     return 0;
   }
 
+  public static String fakeReview(String fileName) {
+    String content = textToString(fileName);
+    String[] words = content.split(" ");
+    String punctuation;
+    String output = "";
+    boolean found;
+
+    for (String word : words) {
+      punctuation = getPunctuation(word);
+      word = removePunctuation(word);
+      found = false;
+
+      if (word.charAt(0) == '*') {
+        if (sentimentVal(word) >= 0) {
+          for (int i = 0; i < posAdjectives.size() && !found; i++) {
+            if (sentiment.get(posAdjectives.get(i)) > sentimentVal(word) && Math.random() < .01) { word = posAdjectives.get(i); }
+          }
+        } else {
+          for (int i = 0; i < negAdjectives.size() && !found; i++) {
+            if (sentiment.get(negAdjectives.get(i)) > sentimentVal(word) && Math.random() < .01) { word = negAdjectives.get(i); }
+          }
+        }
+        //word = randomAdjective();
+      }
+      output += word + punctuation + " ";
+    }
+
+    return output;
+  }
+
+  /*public static String randomAdjective() {
+    if (Math.random() <= posAdjectives.size()/(negAdjectives.size() + posAdjectives.size())) { // if positive adjective
+      return posAdjectives.get((int) Math.random() * posAdjectives.size());
+    }
+    return negAdjectives.get((int) Math.random() * negAdjectives.size());                      // if negative adjective
+  }*/
+
   public static void main(String[] args) {
     System.out.println(sentimentVal("fun"));
     System.out.println(sentimentVal("amazing"));
@@ -193,9 +237,31 @@ public class Review {
     System.out.println(sentimentVal("hideous"));
     System.out.println(sentimentVal("wonderful"));
 
+    System.out.println("\nSHORT POSITIVE REVIEW\n--------------");
     System.out.print("Total sentiment: ");
-    System.out.println(totalSentiment("SimpleReview.txt"));
+    System.out.println(totalSentiment("ShortPositiveReview.txt"));
     System.out.print("Star rating: ");
-    System.out.println(starRating("SimpleReview.txt"));
+    System.out.println(starRating("ShortPositiveReview.txt") + " stars");
+
+    System.out.println("\n\nLONG POSITIVE REVIEW\n--------------");
+    System.out.print("Total sentiment: ");
+    System.out.println(totalSentiment("LongPositiveReview.txt"));
+    System.out.print("Star rating: ");
+    System.out.println(starRating("LongPositiveReview.txt") + " stars");
+
+    System.out.println("\n\nSHORT NEGATIVE REVIEW\n--------------");
+    System.out.print("Total sentiment: ");
+    System.out.println(totalSentiment("ShortNegativeReview.txt"));
+    System.out.print("Star rating: ");
+    System.out.println(starRating("ShortNegativeReview.txt") + " stars");
+
+    System.out.println("\n\nLONG NEGATIVE REVIEW\n--------------");
+    System.out.print("Total sentiment: ");
+    System.out.println(totalSentiment("LongNegativeReview.txt"));
+    System.out.print("Star rating: ");
+    System.out.println(starRating("LongNegativeReview.txt") + " stars");
+
+    System.out.println("\n\nGENERATED REVIEW:\n");
+    System.out.println(fakeReview("LongPositiveReview.txt"));
   }
 }

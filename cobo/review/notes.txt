@@ -1,4 +1,5 @@
-ACTIVIDAD UNO
+ACTIVITY 1
+-----------
 1a. public static double sentimentVal( String word )
 1b. String word
 1c. double
@@ -12,11 +13,83 @@ beautiful 2.76
 3b. No, because there isn't a function named sentimentVal() that includes a argument of type String
 3c. No, because there isn't a function named sentimentVal() that takes in two String arguments
 
-ACTIVIDAD DOS
+
+
+ACTIVITY 2
+-----------
 4. In our implementation, we first split the file content into each component word, and store this in an array.
    We also initialize a "counter" that stores the current sentiment value total. We then iterate through each
    item of this array (each word). In each iteration, we store a copy of the word without punctuation, using
    the removePunctuation() function, calculate its sentimentVal(), and add this to the total sentiment value.
    We then return the total sentiment value at the end of the function.
 
-5. No, they do not. Longer reviews get measured as more extremely positive or negative.
+5a. No, they do not. Longer reviews get measured as more extremely positive or negative. We tested this by
+    writing one positive review, and making the file "ShortPositiveReview.txt" contain this review once, and
+    making the file "LongPositiveReview.txt" contain this review twice. We then ran the sentiment analysis on each
+    of these files, and found that the long positive review had twice the total sentiment as the short
+    positive review, despite it saying the exact same thing. We did a similar test on a negative review, and
+    found similar results.
+
+5b. Option 1: Instead of returning the sum of the sentiment for all of the words, you could divide that by the
+              word count, essentially finding the average sentiment per word.
+
+    The disadvantage of this is that longer positive reviews indicate more intent in writing them than shorter
+    reviews. Therefore, you could argue that there should be some positive weight given to the review length.
+
+    Option 2: First, you could calculate the sentiment/word from Option 1. Then, you could multiply this by
+              the square root of the word count (or some other function that "flattens out"). The advantage to
+              this would be that the word count would have some effect, but not a linear effect.
+
+    However, Option 2 would make it so that reviews could get infinitely high ratings if they're just really
+    long. An alternative would be to...
+
+    Option 3: Use the sigmoid function, which has an upper limit. This would mean that although word count
+              would have a positive effect on the total sentiment, it wouldn't become excessive, because the
+              sigmoid function has an absolute limit of 1.
+
+6. He made the function categorize all sentiments below 15 as being 4 stars, whereas all sentiments above 15
+   should be 5 stars. This could be fixed by flipping all of the "<" signs to ">".
+
+
+
+ACTIVITY 3
+-----------
+3. If you going through each word individually, there is no need for the indexOf() method, because you do not
+   need to find the index of any character. The substring() method is necessary to extract the part of the
+   word after the asterisk. It is necessary to add one to the position to avoid copying the asterisk.
+
+5. Static methods are connected directly to the class they're in, whereas non-static methods are directly
+   connected to the instance of the class that they're in. For example, a static method can be called with:
+
+      BigSib.greet()
+
+   This is directly calling the class BigSib, rather than an instance of the class. In this case, the method
+   greet() is static. However, if you ran the following...
+
+      BigSib richard = new BigSib();
+      richard.greet()
+
+   ... this would refer to an instance of the class rather than the class itself. This version of greet()
+   would be static.
+   
+6. The randomAdjective() function decides whether to run randomPositiveAdj() or randomNegativeAdj() randomly.
+   If you wanted the output to only be either positive or negative, you could only ever run one of those two
+   functions.
+
+
+
+ACTIVITY 4
+-----------
+1. If a company wanted to slander their competitor, they could automatically generate fake negative reviews
+   and post them onto their competitor's website.
+2. If a company wanted to pretend they were more respected than they actually are, they could automatically
+   generated fake positive reviews and post it onto their own website.
+3. A program would look through every word of the review. If the word is indicated to be an adjective, the
+   program would search through each adjective until it finds one more intense than the one currently used.
+   The program will then replace the current adjective with this more intense one.
+5. The first character would be removed from "oneWord"
+6. Because the asterisk is not a part of the word
+7. A website who wanted to appear better than they are could replace any positive reviews with more positive
+   reviews using this function.
+6. 
+7. 
