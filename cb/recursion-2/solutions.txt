@@ -1,3 +1,9 @@
+Team Name Pretending Greatness - Yat Long Chan, Gabriel Thompson
+APCS
+HW64 -- Revisitation
+2022-02-14
+time spent: 1.2 hrs at home, 0.3 hrs at school = 1.5 hrs total
+
 public boolean groupSum(int start, int[] nums, int target) {
   // We used a hint, because we struggled with this for a very long time but were still very confused
   if (start >= nums.length)  return target == 0;
