@@ -1,0 +1,47 @@
+Team Tame Meat Mate Meta (Gabriel Thompson, Kartik Vanjani)
+APCS
+HW65 -- NQUEENS
+2022-02-16
+time spent: 0.4hrs in class + 0.5hrs at home = 0.9hrs TOTAL
+
+DISCO:
+ - It appears that every square board except 2x2 and 3x3 can be solved
+ - Solving this problem was incredibly fun
+
+QCC:
+ - How would this algorithm work for boards that are rectangular?
+    > We should probably try this
+ - What is the time complexity of our algorithm? We counted the number of
+   "operations", and found that it generally trended upwards, but varied
+   wildly between two boards
+ - Can it be mathematically proven that any board larger than or equal to
+   4x4 can be solved?
+ - What is so fundamental about 2x2 and 3x3 boards that make them unable
+   to be solved?
+ - Is there any pattern in the solutions that would allow us to optimize
+   our algorithm to run in a better time complexity?
+    > The solutions that our function found are really bizarre and
+      chaotic. Why do those specific solutions work so well?
+ - *How* many solutions are there for each board size?
+
+RESPONSES TO SHEET:
+
+1) - The function foo() returns whether it's possible to place a queen at a
+     specific row and column on the board. If possible, it also places a
+     queen at the row and column selected
+   - The function whutItDoo() returns whether it's possible remove a queen
+     from the specified row and column. If possible, it removes the queen
+     from the spot.
+
+2) foo()
+   precond:  _board exists, row and col are both < than size
+   postcond: a queen is placed at the row and col, if there wasn't already
+             a queen there
+
+   whutItDoo()
+   precond:  _board exists, row and col are both < size
+   postcond: if a queen is placed at the row and col, it is removed and its
+             the places which it can attack are reset to 0
+
+3) foo()       -> placeQueen()
+   whutItDoo() -> removeQueen()
