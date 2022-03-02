@@ -15,16 +15,27 @@
  * $ java KnightTour [N]
  *
  * ALGO
+ *  1. Calculate all tiles that the knight at (lastKnightRow, lastKnightCol) can go to
+ *  2. If the length of this list is zero (indicating that the knight can’t move anywhere)... 
+ *Return an empty array. This will end the function.
+Otherwise, iterate through each possible tile to move the knight. For each, do the following...
+Mark the tile with a number one higher than the current value at (lastKnightRow, lastKnightCol)
+Call knightsTour() with the modified board and the current row and col being altered as arguments
+If the result of the function call is not an empty array...
+Return this result
+Otherwise, remove the knight, and go back to (3) for the next possible tile.
+If you’ve gotten this far without returning, return an empty board.
+
  *
  * DISCO
  *
  * QCC
  *
  * Mean execution times for boards of size n*n:
- * n=5   __s    across __ executions
- * n=6   __s    across __ executions
- * n=7   __s    across __ executions
- * n=8   __s    across __ executions
+ * n=5   0.029s    across 594318 executions
+ * n=6   0.101s    across 18984736 executions
+ * n=7   0.104s    across 20091201 executions
+ * n=8   Didn't run in time s    across NaN executions
  *
  * POSIX PROTIP: to measure execution time from BASH, use time program:
  * $ time java KnightTour 5
@@ -64,15 +75,20 @@ public class KnightTour
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //for random starting location, use lines below:
-    //int startX = //YOUR MATH CONSTRUCT FOR GENERATING A RANDOM LEGAL X VALUE
-    //int startY = //YOUR MATH CONSTRUCT FOR GENERATING A RANDOM LEGAL X VALUE
-    //tf.findTour( startX, startY, 1 );   // 1 or 0 ?
+    int startX = (int) (2 + (Math.random() * n));
+    int startY = (int) (2 + (Math.random() * n));
+    tf.findTour( startX, startY, 1 );   // 1 or 0 ?
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // PUSHING FARTHER...
     // Systematically attempt to solve from every position on the board?
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    for (int row = 2; row < n + 2; row++) {
+      for (int col = 2; col < n + 2; col++) {
+        tf.findTour(row, col, 1);
+      }
+    }
 
   }//end main()
 
@@ -85,6 +101,8 @@ class TourFinder
   private int[][] _board;
   private int _sideLength; //board has dimensions n x n
   private boolean _solved = false;
+  private long startTime = System.currentTimeMillis();
+  private int executions = 0;
 
   //constructor -- build board of size n x n
   public TourFinder( int n )
@@ -158,16 +176,22 @@ class TourFinder
    **/
   public void findTour( int x, int y, int moves )
   {
+    executions++;
     //delay(50); //slow it down enough to be followable
 
     //if a tour has been completed, stop animation
-    if (moves > (_sideLength * _sideLength)) System.exit(0);
+    if (_solved) {
+	long end = System.currentTimeMillis();
+        System.out.println(end - startTime);
+        System.out.println(executions);
+	System.exit(0);
+    }
 
     //primary base case: tour completed
-    if (moves == (_sideLength * _sideLength)) {
-
+    if (moves == (_sideLength * _sideLength) && _board[y][x] == 0) {
+      _solved = true;
+      _board[y][x] = _sideLength * _sideLength;
       System.out.println( this ); //refresh screen
-      System.out.println("TOUR COMPLETED");
       return;
     }
     //other base case: stepped off board or onto visited cell
@@ -181,9 +205,7 @@ class TourFinder
       //mark current cell with current move number
       _board[y][x] = moves;
 
-      System.out.println( this ); //refresh screen
-
-      delay(1000); //uncomment to slow down enough to view
+      //delay(1000); //uncomment to slow down enough to view
 
       /**********************g********************
        * Recursively try to "solve" (find a tour) from
@@ -206,8 +228,6 @@ class TourFinder
 
       //If made it this far, path did not lead to tour, so back up...
       // (Overwrite number at this cell with a 0.)
-
-      //System.out.println( this ); //refresh screen
     }
 
     _board[y][x] = 0;
