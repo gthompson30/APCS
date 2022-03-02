@@ -14,11 +14,13 @@ time spent: 0.4hrs in class + 0.5hrs at home = 0.9hrs TOTAL
  * 2. Implement solver method.
  */
 
+import java.util.ArrayList;
+
 public class QueenBoard
 {
 
   public int[][] _board;
-  public int calls;
+  public long calls;
 
   public QueenBoard( int size ) 
   {
@@ -148,6 +150,7 @@ public class QueenBoard
   //main method for testing...
   public static void main( String[] args )
   {
+    ArrayList<Long> a = new ArrayList<Long>();
     QueenBoard b = new QueenBoard(5);
     System.out.println(b);
     /** should be...
@@ -181,10 +184,12 @@ public class QueenBoard
 
     boolean showBoards = true;
     System.out.println("CAN THE FOLLOWING N X N BOARDS BE SOLVED??");
-    for (int i = 1; i < 30; i++) {
+    for (int i = 1; i < 50; i++) {
        b._board = new int[i][i];
        System.out.println(i + "x" + i + "  |  " + b.solve() + " | " + b.calls);
        if (showBoards) b.printSolution();
+       a.add(b.calls);
+       System.out.println(a);
     }
 
     System.out.println("\n...it appears that all NxN boards can be solved such that N≤1 ∪ N≥4");
