@@ -1,8 +1,8 @@
-// Clyde Sinclair
-// APCS pd0
+// Team Tame Meat Mate Meta (Gabriel Thompson, Kartik Vanjani)
+// APCS pd8
 // HW68 -- recursively probing for a closed cycle
-// 2022-02-28m
-// time spent:  hrs
+// 2022-03-01w
+// time spent: 0.7 hrs
 
 /***
  * SKELETON
@@ -17,19 +17,27 @@
  * ALGO
  *  1. Calculate all tiles that the knight at (lastKnightRow, lastKnightCol) can go to
  *  2. If the length of this list is zero (indicating that the knight can’t move anywhere)... 
- *Return an empty array. This will end the function.
-Otherwise, iterate through each possible tile to move the knight. For each, do the following...
-Mark the tile with a number one higher than the current value at (lastKnightRow, lastKnightCol)
-Call knightsTour() with the modified board and the current row and col being altered as arguments
-If the result of the function call is not an empty array...
-Return this result
-Otherwise, remove the knight, and go back to (3) for the next possible tile.
-If you’ve gotten this far without returning, return an empty board.
+ *      a. Return an empty array. This will end the function.
+ *  3. Otherwise, iterate through each possible tile to move the knight. For each, do the following...
+ *      a. Mark the tile with a number one higher than the current value at (lastKnightRow, lastKnightCol)
+ *      b. Call knightsTour() with the modified board and the current row and col being altered as arguments
+ *      c. If the result of the function call is not an empty array...
+ *          i. Return this result
+ *      d. Otherwise, remove the knight, and go back to (3) for the next possible tile.
+ *  4. If you’ve gotten this far without returning, return an empty board.
 
  *
  * DISCO
+ *  - Having a "moat" around the board allows for our function to not check whether each function
+ *    call is a valid move, because that check can be done after the function is called.
+ *  - Backtracking takes a while to get used to, and following a diagram you made is a really good
+ *    idea
  *
  * QCC
+ *  - When we tried to run the knight's tour for an 8x8 board, we ran it for over a minute, and it
+ *    still didn't finish. Why is the 8x8 tour so much harder than all previous boards?
+ *  - Why is the number of executions and time for 6x6 and 7x7 so similar?
+ *  - Our final code feels disproportionately small given the task it undertakes
  *
  * Mean execution times for boards of size n*n:
  * n=5   0.029s    across 594318 executions
