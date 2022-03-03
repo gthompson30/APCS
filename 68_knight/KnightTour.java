@@ -83,17 +83,25 @@ public class KnightTour
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //for random starting location, use lines below:
-    int startX = (int) (2 + (Math.random() * n));
-    int startY = (int) (2 + (Math.random() * n));
-    tf.findTour( startX, startY, 1 );   // 1 or 0 ?
+    //int startX = (int) (2 + (Math.random() * n));
+    //int startY = (int) (2 + (Math.random() * n));
+
+    //for (int row = 0; row < 5; row++) {
+    //  for (int col = 0; col < 5; col++) {
+    //    tf.findTour(row, col, 1);
+    //  }
+    //}
+    tf.findTour(3,3,1);
+
+    //tf.findTour( startX, startY, 1 );   // 1 or 0 ?
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // PUSHING FARTHER...
     // Systematically attempt to solve from every position on the board?
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    for (int row = 2; row < n + 2; row++) {
-      for (int col = 2; col < n + 2; col++) {
+    for (int row = 3; row < n + 2; row++) {
+      for (int col = 3; col < n + 2; col++) {
         tf.findTour(row, col, 1);
       }
     }
