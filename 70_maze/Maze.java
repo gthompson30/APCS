@@ -1,26 +1,48 @@
-// Clyde Sinclair
-// APCS pd0
-// HW69 -- maze solving (blind, depth-first)
+// Team Name Pretending Greatness (Gabriel Thompson + Hamim Seam)
+// APCS pd8
+// HW70 -- Thinkers of the Corn
 // 2022-03-03r
-// time spent:  hrs
+// time spent: 0.8hrs
 
 /***
  * SKEELTON for
  * class MazeSolver
  * Implements a blind depth-first exit-finding algorithm.
  * Displays probing in terminal.
- * 
- * USAGE: 
+ *
+ * USAGE:
  * $ java Maze [path/to/mazefile]
  * (mazefile is ASCII representation of a maze, using symbols below)
  *
  * ALGORITHM for finding exit from starting position:
- *  <INSERT YOUR SUMMARY OF ALGO HERE>
+ *  1. If the starting position is off the board, on path that has been marked as visited,
+ *     or on the current path, end the function
+ *  2. If the starting position is on the exit tile, print the current state of the board
+ *     and quit the entire program
+ *  3. If neither of the following previous if statements have triggered...
+ *      4. Mark the current tile as part of the path ("@")
+ *      5. Call the same algorithm for the tile to the left, and display the board
+ *      6. Call the same algorithm for the tile to the right, and display the board
+ *      7. Call the same algorithm for the tile to the down (sic), and display the board
+ *      8. Call the same algorithm for the tile to the up (sic), and display the board
+ *      9. Mark the current tile as "already visited" (".")
+ *     10. Display the board
  *
  * DISCO
- * 
+ *  - If you've already ran the function on a tile, and didn't find a valid path, there's
+ *    no point drawing a path through that tile
+ *  - There's no point in going back to a tile that is already on the path
+ *
  * QCC
- * 
+ *  - It is really really fun to just watch the algorithm slowly solve a maze.
+ *  - What is the time complexity of depth-first search? How would you define n? The area,
+ *    or side length of the board? Or the number of path tiles?
+ *  - Is this how Google Maps does routing? It seems like it would be very inefficient to
+ *    use this algorithm on large boards. Could there be a star algorithm that would
+ *    outshine depth first search?
+ *  - Why does backtracking sometimes not delay for vertical stretches when we run our
+ *    program
+ *
  ***/
 
 //enable file I/O
@@ -93,62 +115,8 @@ class MazeSolver
   {
     //send ANSI code "ESC[0;0H" to place cursor in upper left
     //String retStr = "[0;0H";
-    String retStr = System.out.println( "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                         " );
+    String retStr = "";
+    for (int i = 0; i < 100; i++) retStr += "\n";
     //emacs shortcut: C-q, ESC
     //emacs shortcut: M-x quoted-insert, ESC
 
@@ -215,7 +183,7 @@ class MazeSolver
 
   //accessor method to help with randomized drop-in location
   public boolean onPath( int x, int y) {
-      return true;
+      return _maze[y][x] == '#';
   }
 
 }//end class MazeSolver
@@ -246,11 +214,16 @@ public class Maze
 
     //drop hero into the maze (coords must be on path)
     // ThinkerTODO: comment next line out when ready to randomize startpos
-    ms.solve( 1, 2 );
 
     //drop our hero into maze at random location on path
-    // YOUR RANDOM-POSITION-GENERATOR CODE HERE
-    //ms.solve( startX, startY );
+    int startX = 0; int startY = 0;
+
+    while (!onPath(startX, startY)) {
+      startX = (int) (Math.random() * ms.w);
+      startY = (int) (Math.random() * ms.h);
+    }
+
+    ms.solve( startX, startY );
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
