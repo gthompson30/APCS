@@ -1,0 +1,6 @@
+(From class, pertains to the original array example)
+- Big O is O(n)
+- If V=12 nothing happens. 
+- A and B are bounds? 
+- The arr[i] refers to the number at that index in the array. 
+- Since S=0 at the beginning, the traversal begins at the first element.
