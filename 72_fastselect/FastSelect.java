@@ -2,47 +2,46 @@
 // APCS pd8
 // HW72 -- So So Fast
 // 2022-03-08t
-// time spent: hrs
+// time spent: 1.0hrs
 
 /***
- * SKEELTON for
- * class Mysterion
- * tests preliminary hypotheses re: utility of mystery algo
+ * ALGO
+ *  1. From the known sorted index, partition the array
+ *  2. If the known sorted index is the number that we're looking for, return that.
+ *  3. If the known sorted index is less than the number we're looking for...
+ *     -> The known sorted index to the right bound will contain the number we're looking for,
+ *        so partition from the sorted index to the right bound
+ *  4. If the known sorted index is more than the number we're lookin for...
+ *     -> The left bound to the known sorted index will contain the number we're looking for, so
+ *        partition from the left bound to the sorted index
  *
- * <h1>It's a Bird, It's a Plane! It's.... MYSTERION</h1>
- * The Mysterion method ... <YOUR TRIO'S DESCRIPTION HERE> 
- * <p>
- * <b>Note:</b> BLAH blah blah, yakkety schmakketty...
- * @author  Trey Parker, Matt Stone
- * @version 3.1415926535897932384626433
- * @since   2022-03-07m
+ * BEST CASE SCENARIO
+ *  -> The middle number is the item we're searching for
+ *  -> Complexity: O(n), because it runs the partition function once, then instantly ends the process
  *
- * algo as pseudocode:
- * ------------------------------
- *     v = arr[c]
- *     swap arr[c], arr[b]  
- *     s = a
- *     for i in [a..b-1]
- *         if arr[i] < v
- *             swap arr[s], arr[i]
- *             s+=1
- *     swap arr[b], arr[s] 
- * 
+ * WORST CASE SCENARIO
+ *  -> The first or last number is the item we're searching for
+ *  -> Complexity: O(n log n), because the partition function runs in O(n) time, and gets called on
+ *     the order of O(log n) times, because the size of the array being handled roughly halves in
+ *     each function call
+ *
  * DISCO
- * 
+ *  -> When we call a method in an if statement, the method will be called
+ *  -> Calling the partition() function multiple times changed our result
+ *
  * QCC
- * 
- * q0: What does it do?
- * a0:
- * 
- * q1: O(?)
- * a1:
- * 
+ *  -> Both this algorithm and merge sort run in O(n log n) time. Which is preferable? Does Java
+ *     use either of this?
+ *  -> What is this algorithm called? How quickly can it sort?
+ *
  ***/
 
+import java.util.Arrays;
 
 public class FastSelect
 {
+  public static int counter = 0;
+
   //--------------v  HELPER METHODS  v--------------
   //swap values at indices x, y in array o
   public static void swap( int x, int y, int[] o )
@@ -83,17 +82,6 @@ public class FastSelect
   //--------------^  HELPER METHODS  ^--------------
 
 
-  /**
-   * int mysterion(int[],int,int,int)
-   * DESCRIP
-   * 
-   * @param arr
-   * @param a
-   * @param b
-   * @param c
-   * @return int 
-   *
-   */
   public static int partition( int arr[], int left, int right, int pivotIndex)
   {
     int v = arr[pivotIndex];
@@ -112,70 +100,47 @@ public class FastSelect
   }//end mysterion
 
   public static int fastSelect( int arr[], int y ) {
+    counter = 0;
     return fastSelectHelper(arr, 0, arr.length - 1, arr.length / 2, y);
   }
 
   public static int fastSelectHelper( int arr[], int left, int right, int pivotIndex, int y ) {
-    if (partition(arr, left, right, pivotIndex) == y - 1) {
-      return arr[pivotIndex];
+    counter++;
+    int result = partition(arr, left, right, pivotIndex);
+
+    if (result == y - 1) {
+      return arr[y - 1];
     }
 
-    if (partition(arr, left, right, pivotIndex) < y - 1) {
-      fastSelectHelper(arr, pivotIndex + 1, right, (pivotIndex + right + 1)/2, y);
+    if (result < y - 1) {
+      return fastSelectHelper(arr, result + 1, right, (result + right + 1)/2, y);
     } else {
-      fastSelectHelper(arr, left, pivotIndex - 1, (left + pivotIndex - 1)/2, y);
+      return fastSelectHelper(arr, left, result - 1, (left + result - 1)/2, y);
     }
   }
 
   //main method for testing
   public static void main( String[] args )
   {
-
-    //init test arrays of magic numbers
     int[] arr1 = {8,21,17,69,343};
-    int[] arr3 = {1,28,33,4982,37};
-    int[] arr4 = {5,4,17,9000,6};
-    int[] arr5 = {3,0,16,599,1024};
+    int[] arr2 = {1,28,33,4982,37};
+    int[] arr3 = {5,4,17,9000,6};
+    int[] arr4 = {3,0,16,599,1024};
 
+    System.out.println(fastSelect(arr1, 1) + " ...should be 8");
+    System.out.println(fastSelect(arr1, 2) + " ...should be 17");
+    System.out.println(fastSelect(arr1, 3) + " ...should be 21");
+    System.out.println(fastSelect(arr1, 4) + " ...should be 69");
+    System.out.println(fastSelect(arr1, 5) + " ...should be 343");
 
-    /*// run mysterion on each array,
-    // holding a & b fixed, varying c...
-    for( int testC = 0; testC < 5; testC++ ) {
-      System.out.println("arr1: ");
-      printArr(arr1);
-      mysterion(arr1,0,4,testC);
-      System.out.println("after mysterion w/ a=0,b=4,c=" 
-                         + testC +"...");
-      printArr(arr1);
-      System.out.println("-----------------------");
+    System.out.println("\nWORST CASE:");
+    System.out.println(fastSelect(arr2, 4) + " ...should be 37");
+    System.out.println("# of function calls: " + counter);
 
-      System.out.println("arr3:");
-      printArr(arr3);
-      mysterion(arr3,0,4,testC);
-      System.out.println("after mysterion w/ a=0,b=4,c=" 
-                         + testC +"...");
-      printArr(arr3);
-      System.out.println("-----------------------");
-
-      System.out.println("arr4:");
-      printArr(arr4);
-      mysterion(arr4,0,4,testC);
-      System.out.println("after mysterion w/ a=0,b=4,c=" 
-                         + testC +"...");
-      printArr(arr4);
-      System.out.println("-----------------------");
-
-      System.out.println("arr5:");
-      printArr(arr5);
-      mysterion(arr5,0,4,testC);
-      System.out.println("after mysterion w/ a=0,b=4,c=" 
-                         + testC +"...");
-      printArr(arr5);
-      System.out.println("-----------------------");*/
-      /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    }
+    System.out.println("\nBEST CASE:");
+    System.out.println(fastSelect(arr2, 3) + " ...should be 33");
+    System.out.println("# of function calls: " + counter);
   }//end main
 
 }//end class Mysterion
-  
+
