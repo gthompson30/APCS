@@ -1,3 +1,11 @@
+```
+Team Buckaroos (Faiza Huda, Tasnim Chowdhury, Gabriel Thompson)
+APCS
+L07 -- But These Go Up To Eleven
+2022-03-21
+time spent: 3.0hrs
+```
+
 # buckos - Lab07
 ## Faiza Huda, Gabriel Thompson, Tasnim Chowdhury
 
