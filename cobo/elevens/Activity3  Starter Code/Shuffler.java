@@ -1,3 +1,11 @@
+/*
+Team Buckaroos (Faiza Huda, Tasnim Chowdhury, Gabriel Thompson)
+APCS
+L07 -- But These Go Up To Eleven
+2022-03-21
+time spent: 3.0hrs
+*/
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
