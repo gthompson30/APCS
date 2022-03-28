@@ -1,0 +1,12 @@
+Team Not Gonna Lie (Nafiz Labib, Gabriel Thompson, Lauren Lee)
+APCS
+HW82 -- Roll Your Own Iterator
+2022-03-25
+time spent:1.5
+
+
+    DISCO
+     * Nested class inherits all methods and instance variable of larger class
+     * one line statements in if and else statements don't need curly brackets
+    QCC
+     * Does using public Iterator<T> iterator() implement iterator methods in the add functions?
