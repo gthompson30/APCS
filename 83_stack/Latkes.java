@@ -1,3 +1,16 @@
+// Team Not Gonna Lie (Nafiz Labib, Gabriel Thompson, Lauren Lee)
+// APCS
+// HW83 -- Stacks on Stacks
+// 2022-03-28
+// time spent: 1
+//
+//
+//     DISCO
+//      * Adding at front has time complexity of O(n) in every increase
+//      * Adding at back has time complexity of O(1) in best case and O(n) in worse case
+//     QCC
+//      * Is adding in the front/back a matter of perspective like in our formal definition of ADT, or does it make more sense to add in the front to imitate the "pushing" of the elements down
+
 /***
  * class Latkes
  * v1
@@ -23,64 +36,83 @@ public class Latkes
   public Latkes( int initCapacity )
   {
     _stack = new String[initCapacity];
-    _stackSize = initCapacity;
+    _stackSize = 0;
   }// O(?)
 
 
   //means of insertion
   public void push( String s )
   {
-    String[] newArray = new String[this._stackSize + 1];
-    for (int i = 1; i < this._stackSize; i++)
-      newArray[i] = this._stack[i - 1];
+      if (isFull()){
+          String[] newArray = new String[this._stackSize + 1];
+          for (int i = 1; i <= this._stackSize; i++)
+              newArray[i] = this._stack[i - 1];
 
-    newArray[0] = s;
-    this._stack = newArray;
-    this._stackSize++;
-  }// O(?)
+          newArray[0] = s;
+          this._stack = newArray;
+      } else {
+          // System.out.println(_stackSize);
+          for (int i = (_stackSize - 1); i > -1; i--){
+              // System.out.println("this is i => " + i);
+              _stack[i+1] = _stack[i];
+          }
+          _stack[0] = s;
+      }
+      this._stackSize++;
+
+      System.out.println(this);
+
+  }
+  // O(n)
+  //adding at end will make O(1) unless you need increase the size of the array, then it would be O(n)
 
 
   //means of removal
   public String pop( )
   {
-    /* your
-       SIMPLE
-       SMART
-       magicks
-       here
-    */
-  }// O(?)
+      String retVal = _stack[0];
+      if (isEmpty()){
+          return "is empty";
+      } else{
+          for (int i = 1; i < _stackSize; i++){
+              _stack[i-1] = _stack[i];
+          }
+
+          _stack[_stackSize - 1] = null;
+      }
+      _stackSize--;
+      System.out.println(this);
+      return retVal;
+
+  }// O(n)
+  //If we remove at end, is O(1)
 
 
   //chk for emptiness
   public boolean isEmpty()
   {
-    /* your
-       SIMPLE
-       SMART
-       magicks
-       here
-    */
+    return _stackSize < 1;
   }// O(?)
 
 
   //chk for fullness
   public boolean isFull()
   {
-    /* your
-       SIMPLE
-       SMART
-       magicks
-       here
-    */
+    return _stackSize == _stack.length;
   }// O(?)
 
+  public String toString(){
+    String retVal = "{" + _stack[0];
+    for (int i = 1; i < _stack.length; i++){
+      retVal = retVal + "," +  _stack[i];
+    }
+    retVal = retVal + "}";
+    return retVal;
+  }
 
   //main method for testing
   public static void main( String[] args )
   {
-    /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
-
     Latkes tastyStack = new Latkes(10);
 
     tastyStack.push("aoo");
@@ -123,7 +155,6 @@ public class Latkes
 
     //stack empty by now; SOP(null)
     System.out.println( tastyStack.pop() );
-      ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
 
   }//end main()
 
