@@ -1,0 +1,11 @@
+For the warm up, we took out our encapsulation diagrams.
+The kevins presented their diagram, which received much critique from mr mykolyk
+Three teams tried to diagram their push and pop operations. Two failed, but third time was the charm
+We discussed whether to push/pop from the left or the right, and discussed the time complexities of each
+We discussed the role of the size variable
+Practical applications of stacks:
+ - Recursion
+ - Reversing strings
+ - Matching parenthesis
+ - Grocery stores??? (thanks Kartik)
+We then discussed how to reverse a string with stacks
