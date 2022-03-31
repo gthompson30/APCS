@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ALStack<PANCAKE> implements Stack {
+public class ALStack<PANCAKE> implements Stack<PANCAKE> {
 
 	ArrayList<PANCAKE> stack;
 
@@ -18,6 +18,9 @@ public class ALStack<PANCAKE> implements Stack {
 	}
 
 	public PANCAKE pop() {
+    if (stack.isEmpty()){
+      return null;
+    }
 		PANCAKE lastItem = peekTop();
 		this.stack.remove(this.stack.size() - 1);
 		return lastItem;
@@ -28,4 +31,3 @@ public class ALStack<PANCAKE> implements Stack {
 	}
 
 }
-
