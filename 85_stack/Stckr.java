@@ -11,18 +11,20 @@ public class Stckr
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // USAGE: un-comment exactly 1 assignment below
-    Stack<String> cakes = new ALStack<String>();
-    //Stack<Z> cakes = new LLStack<Z>();
+    //Stack<String> cakes = new ALStack<String>();
+    Stack<String> cakes = new LLStack<String>();
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     //...
+      cakes.push("Hello");
+      cakes.push("There");
+      System.out.println(cakes.isEmpty());
+      System.out.println(cakes.peekTop());
+      cakes.pop();
+      cakes.pop();
+      System.out.println(cakes.isEmpty());
+      cakes.pop();
 
-    cakes.push("Hello");
-    cakes.push("There");
-    System.out.println(cakes.isEmpty());
-    cakes.pop();
-    cakes.pop();
-    System.out.println(cakes.isEmpty());
 
   }//end main
 
