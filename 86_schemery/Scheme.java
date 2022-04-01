@@ -1,111 +1,114 @@
-/***
- * class Scheme
- * Simulates a rudimentary Scheme interpreter
- *
- * ALGORITHM for EVALUATING A SCHEME EXPRESSION:
- *   1. Steal underpants.
- *   2. ...
- *   5. Profit!
- *
- * STACK OF CHOICE: ArrayList by tofr
- * b/c ...
- *
- **/
+/*****************************************************
+ * class LLStack
+ * Implements ADT Stack, generically typed.
+ * Uses a LinkedList as underlying container.
+ *****************************************************/
 
-( + 4 ( * 2 3 ( - 3 4 ) 5 ) 3 )
-1: +
-2: -23
+import java.util.LinkedList;
 
-BASE CASE:
-  Just one number : return that number
-RECURSIVE CASE:
-  NOT just one number
-  Iterate through every argument of the operator, and call the function on that, and apply the operator to the result
-
-Algorithm:
- - If we receive an opening parenthesis,
-    - Take in the following operator and first number
-    - Add the operator to stack 1
-    - Add the number to stack 2
- - If we receive a number,
-    - Apply the top operator from stack 1 to the last number in stack 2 and the number being looked at
- - If we receive a closing parenthesis,
-    - Pop the top operator from stack 1
-    - Apply the new top operator to the top item of stack 2 and the second-to-top item
-
-BASE CASE:
-  Just one number : return that number
-RECURSIVE CASE:
-  NOT just one number
-  Iterate through every argument of the operator, and call the function on that, and apply the operator to the result
-
-public class Scheme
+public class LLStack<T> implements Stack<T>
 {
-  /***
-   * precond:  Assumes expr is a valid Scheme (prefix) expression,
-   *           with whitespace separating all operators, parens, and 
-   *           integer operands.
-   * postcond: Returns the simplified value of the expression, as a String
-   * eg, Ops: + is 1, - is 2, * is 3
-   *             evaluate( "( + 4 3 )" ) -> 7
-   *	         evaluate( "( + 4 ( * 2 5 ) 3 )" ) -> 17
-   **/
-  public static String evaluate( String expr )
+
+  private LinkedList<T> _stack;
+
+  //constructor
+  public LLStack()
   {
-  }//end evaluate()
+    _stack = new LinkedList<T>();
+  }
 
 
-  /***
-   * precond:  Assumes top of input stack is a number.
-   * postcond: Performs op on nums until closing paren is seen thru peek().
-   *           Returns the result of operating on sequence of operands.
-   *           Ops: + is 1, - is 2, * is 3
-   **/
-  public static String unload( int op, Stack<String> numbers )
+  //means of insertion
+  public void push( T s )
   {
-	
-  }//end unload()
+    _stack.add(s);
+  }
 
 
-  /*
-  //optional check-to-see-if-its-a-number helper fxn:
-  public static boolean isNumber( String s ) {
-  try {
-  Integer.parseInt(s);
-  return true;
+  //means of viewing top element without removing
+  public T peekTop( )
+  {
+    T retVal = null;
+    if ( isEmpty() )  return null;
+    retVal = _stack.getLast();
+    return retVal;
   }
-  catch( NumberFormatException e ) {
-  return false;
+
+
+  //means of removal
+  public T pop( )
+  {
+    T retVal = null;
+    if ( isEmpty() )  return null;
+    retVal = _stack.removeLast();
+    return retVal;
   }
-  }
-  */
+
+
+  //chk for emptiness
+  public boolean isEmpty() {  return _stack.size() == 0;  }
 
 
   //main method for testing
   public static void main( String[] args )
   {
 
-    /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
-      String zoo1 = "( + 4 3 )";
-      System.out.println(zoo1);
-      System.out.println("zoo1 eval'd: " + evaluate(zoo1) );
-      //...7
+    Stack<String> tastyStack = new LLStack<String>();
 
-      String zoo2 = "( + 4 ( * 2 5 ) 3 )";
-      System.out.println(zoo2);
-      System.out.println("zoo2 eval'd: " + evaluate(zoo2) );
-      //...17
+    tastyStack.push("aoo");
+    tastyStack.push("boo");
+    tastyStack.push("coo");
+    tastyStack.push("doo");
+    tastyStack.push("eoo");
+    tastyStack.push("foo");
+    tastyStack.push("goo");
+    tastyStack.push("hoo");
+    tastyStack.push("ioo");
+    tastyStack.push("joo");
+    tastyStack.push("coocoo");
+    tastyStack.push("cachoo");
 
-      String zoo3 = "( + 4 ( * 2 5 ) 6 3 ( - 56 50 ) )";
-      System.out.println(zoo3);
-      System.out.println("zoo3 eval'd: " + evaluate(zoo3) );
-      //...29
+    //cachoo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    //coocoo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    //joo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    //ioo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    //hoo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    //goo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    //foo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    //eoo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    //doo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    //coo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    //boo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    //aoo
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
 
-      String zoo4 = "( - 1 2 3 )";
-      System.out.println(zoo4);
-      System.out.println("zoo4 eval'd: " + evaluate(zoo4) );
-      //...-4
-      ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
-  }//main()
+    //stack empty by now; SOP(null)
+    System.out.println( "peek: " + tastyStack.peekTop() );
+    System.out.println( "pop: " + tastyStack.pop() );
+    System.out.println( tastyStack.pop() );
+  }//end main
 
-}//end class Scheme
+}//end class LLStack
