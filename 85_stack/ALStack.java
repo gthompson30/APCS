@@ -18,9 +18,9 @@ public class ALStack<PANCAKE> implements Stack<PANCAKE> {
 	}
 
 	public PANCAKE pop() {
-    if (stack.isEmpty()){
-      return null;
-    }
+	    	if (stack.isEmpty()){
+      			return null;
+   	 	}
 		PANCAKE lastItem = peekTop();
 		this.stack.remove(this.stack.size() - 1);
 		return lastItem;
