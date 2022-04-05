@@ -1,3 +1,9 @@
+// Gabriel Thompson
+// APCS
+// HW88 -- BPC Kiddies Do Not Wait in Line Either
+// 2022-04-04
+// time spent: 2.0hrs (yes, I know)
+
 /***
  * class RQueue
  * SKELETON
@@ -14,11 +20,27 @@
  *
  **/
 
+/**
+ *
+ * DISCO
+ *  - Diagramming is helpful, kinda
+ *
+ * QCC
+ * - Why do we set pointers instead of swapping the cargo values?
+ * - Why is our shuffling algo only printing out dread?
+ * - For shuffling, is it better to do the array method of picking two random
+ *   elements and swapping them, or repeatedly choosing random indexes and
+ *   pushing them to the beginning of the queue
+ * - We spent two hours on this but still weren't able to get it to work, and
+ *   eventually decided that we were being irrational and decided to give it
+ *   a rest™
+ *
+ **/
 
-public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
+public class RQueue<T> implements Queue<T>
 {
   //instance variables
-  private LLNode<SWASHBUCKLE> _front, _end;
+  private LLNode<T> _front, _end;
   private int _size;
 
 
@@ -32,6 +54,7 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
 
   public T dequeue()
   {
+    this.sample();
     T retVal = _front.getCargo();
     _front = _front.getNext();
 
@@ -62,18 +85,53 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
 
   public T peekFront()
   {
-
+    return _front.getCargo();
   }//O(?)
 
 
   /***
    * void sample() -- a means of "shuffling" the queue
    * Algo:
-   *   < YOUR SUCCINCT SUMMARY HERE >
+   *   1. Generate a random number.
+   *   2. Move the first item in the queue to that index
+   *   3. Go back to (1) and repeat "size" times.
    **/
   public void sample ()
   {
-    
+   System.out.println(this);
+   _front.setNext(_end);
+   _end.setNext(_front);
+   /*LLNode<T> middle = _front;
+   for (int i = 0 ; i < _size / 2 - 1 ; i++) {
+     middle = middle.getNext();
+   }
+   _front.setNext(middle.getNext());
+   middle.setNext(middle.getNext().getNext());*/
+   /*
+    for (int i = 0; i < _size; i++) {
+      int index = 1 + (int) (Math.random() * (_size - 2));
+      LLNode<T> temp;
+      LLNode<T> before = _front;
+
+      for (int j = 0; j < index - 1; j++) {
+        System.out.println(before + " " + before.getNext());
+	before = before.getNext();
+      }
+      temp = before.getNext();
+
+      before.setNext(_front);
+      _front.setNext(temp);
+
+      //a -> b -> c -> d -> e -> f
+
+      temp.getNext().setNext(before);
+
+      System.out.println(this);
+      for (int k = index ; k < _size ; k++) {
+        _front = _front.getNext();
+      }
+    }
+    */
   }//O(?)
 
 
@@ -86,7 +144,18 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
   // print each node, separated by spaces
   public String toString()
   {
+    String out = "";
+    LLNode<T> current = _front;
 
+    out += "[";
+    for (int i = 0 ; i < _size ; i++) {
+      out += current.getCargo();
+      current = current.getNext();
+
+      if (i < _size - 1)
+        out += ", ";
+    }
+    return out + "]";
   }//end toString()
 
 
@@ -94,9 +163,6 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
   //main method for testing
   public static void main( String[] args )
   {
-
-      /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
-    
     Queue<String> PirateQueue = new RQueue<String>();
 
     System.out.println("\nnow enqueuing..."); 
@@ -122,6 +188,7 @@ public class RQueue<SWASHBUCKLE> implements Queue<SWASHBUCKLE>
                        "(expect NPE)\n"); 
     System.out.println( PirateQueue.dequeue() );
 
+      /*v~~~~~~~~~~~~~~MAKE MORE~~~~~~~~~~~~~~v
       ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
 
   }//end main
