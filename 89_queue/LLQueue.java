@@ -14,18 +14,22 @@ public class LLQueue<T> implements Queue<T> {
 		this.queue = new LinkedList<T>();
 	}
 
+	// O(1)
 	public T dequeue() {
 		return (T) this.queue.removeFirst();
 	}
 
+	// O(1)
 	public void enqueue( T x ) {
 		this.queue.addLast(x);
 	}
 
+	// O(1)
 	public boolean isEmpty() {
 		return this.queue.size() == 0;
 	}
 
+	// O(1)
 	public T peekFront() {
 		return (T) this.queue.getFirst();
 	}
