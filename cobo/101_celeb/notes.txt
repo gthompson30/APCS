@@ -1,0 +1,21 @@
+1 & 2.
+ - A class representing the deck of all celebrities, which will be shuffled initially
+    - Each person could be its own class with the following properties:
+	- Name
+	- Known for
+    - 
+
+4.
+ - Methods
+   - shuffle()
+   - guess()
+   - isCorrect()
+
+3.
+ - Variable
+   - score
+
+5. Pseudocode:
+  ARGS: A list of celebrities
+  1. Shuffle the list
+  2. 
