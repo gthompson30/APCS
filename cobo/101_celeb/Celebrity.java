@@ -26,10 +26,10 @@ public class Celebrity
             _clue   = clue;
 	}
 
-	public Celebrity()
+	public Celebrity(String answer)
 	{
-            _answer = "Mr. Brooks";
-	    _clue = "Stuy CS teacher who i really hope will be back next semester but is currently on medical leave";
+	    _answer = answer;
+            _clue   = "N/A good luck lol";
 	}
 
 	/**

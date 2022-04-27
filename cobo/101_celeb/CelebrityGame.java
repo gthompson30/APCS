@@ -11,6 +11,7 @@ public class CelebrityGame
 	/**
 	 * A reference to a Celebrity or subclass instance.
 	 */
+        private Celebrity gameCelebrity;
 
 	/**
 	 * The GUI frame for the Celebrity game.
@@ -19,12 +20,14 @@ public class CelebrityGame
 	/**
 	 * The ArrayList of Celebrity values that make up the game
 	 */
+	private ArrayList<Celebrity> celebGameList;
 
 	/**
 	 * Builds the game and starts the GUI
 	 */
 	public CelebrityGame()
 	{
+          celebGameList = new ArrayList<Celebrity>();
 	}
 
 	/**
@@ -32,6 +35,8 @@ public class CelebrityGame
 	 */
 	public void prepareGame()
 	{
+          celebGameList = new ArrayList<Celebrity>();
+          gameWindow.replaceScreen("START");
 	}
 
 	/**
@@ -69,7 +74,7 @@ public class CelebrityGame
 	 */
 	public void addCelebrity(String name, String guess, String type)
 	{
-		
+		celebGameList.add(new Celebrity(name, guess));
 	}
 
 	/**
@@ -79,7 +84,7 @@ public class CelebrityGame
 	 */
 	public boolean validateCelebrity(String name)
 	{
-		return false;
+		return name.length() >= 4;
 	}
 
 	/**
@@ -91,7 +96,7 @@ public class CelebrityGame
 	 */
 	public boolean validateClue(String clue, String type)
 	{
-		return false;
+		return clue.length() >= 10;
 	}
 
 	/**
