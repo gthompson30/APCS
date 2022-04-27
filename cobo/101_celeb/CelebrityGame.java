@@ -16,6 +16,7 @@ public class CelebrityGame
 	/**
 	 * The GUI frame for the Celebrity game.
 	 */
+        public CelebrityFrame gameWindow;
 
 	/**
 	 * The ArrayList of Celebrity values that make up the game
@@ -27,7 +28,8 @@ public class CelebrityGame
 	 */
 	public CelebrityGame()
 	{
-          celebGameList = new ArrayList<Celebrity>();
+	  this.prepareGame();
+	  this.play();
 	}
 
 	/**
@@ -36,7 +38,11 @@ public class CelebrityGame
 	public void prepareGame()
 	{
           celebGameList = new ArrayList<Celebrity>();
+          gameWindow = new CelebrityFrame(this);
           gameWindow.replaceScreen("START");
+          for (int i = 0; i < 20; i++) {
+            this.addCelebrity("Aphex Twin", "electronic artist", "");
+          }
 	}
 
 	/**
@@ -59,7 +65,13 @@ public class CelebrityGame
 	 */
 	public void play()
 	{
-		
+		if (celebGameList != null && celebGameList.size() > 0)
+		{
+                        System.out.println("Should show GUI!");
+			this.gameCelebrity = celebGameList.get(0);
+			gameWindow.setVisible(true);
+			gameWindow.replaceScreen("GAME");
+		}
 	}
 
 	/**
