@@ -8,11 +8,13 @@ public class Celebrity
 	/**
 	 * The clue to determine the celebrity
 	 */
-	
+	String _clue;
+
 	/**
 	 * The answer or name of the celebrity.
 	 */
-	
+	String _answer;
+
 	/**
 	 * Creates a Celebrity instance with the supplied answer and clue
 	 * @param answer
@@ -20,6 +22,14 @@ public class Celebrity
 	 */
 	public Celebrity(String answer, String clue)
 	{
+            _answer = answer;
+            _clue   = clue;
+	}
+
+	public Celebrity()
+	{
+            _answer = "Mr. Brooks";
+	    _clue = "Stuy CS teacher who i really hope will be back next semester but is currently on medical leave";
 	}
 
 	/**
@@ -28,7 +38,7 @@ public class Celebrity
 	 */
 	public String getClue()
 	{
-		return null;
+		return _clue;
 	}
 
 	/**
@@ -37,7 +47,7 @@ public class Celebrity
 	 */
 	public String getAnswer()
 	{
-		return null;
+		return _answer;
 	}
 
 	/**
@@ -46,7 +56,7 @@ public class Celebrity
 	 */
 	public void setClue(String clue)
 	{
-		
+		_clue = clue;
 	}
 
 	/**
@@ -55,7 +65,7 @@ public class Celebrity
 	 */
 	public void setAnswer(String answer)
 	{
-		
+		_answer = answer;
 	}
 	
 	/**
@@ -64,7 +74,17 @@ public class Celebrity
 	@Override
 	public String toString()
 	{
-		return null;
+		return _answer;
 	}
 	
+	public static void main(String[] args) {
+		Celebrity harrisonFord = new Celebrity("Harrison Ford", "Played Indiana Jones and Han Solo");
+		System.out.println("Name: " + harrisonFord);
+		System.out.println("Answer: " + harrisonFord.getAnswer() + "\nClue: " + harrisonFord.getClue());
+		harrisonFord.setAnswer("Will Smith");
+		harrisonFord.setClue("Played the Fresh Prince of Bel Air, and punched Chris Rock on stage");
+                System.out.println("Name: " + harrisonFord);
+                System.out.println("Answer: " + harrisonFord.getAnswer() + "\nClue: " + harrisonFord.getClue());
+	}
+
 }
