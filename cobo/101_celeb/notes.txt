@@ -1,21 +1,12 @@
-1 & 2.
- - A class representing the deck of all celebrities, which will be shuffled initially
-    - Each person could be its own class with the following properties:
-	- Name
-	- Known for
-    - 
+1. We would include a "Game" class, which will store the current game information,
+   and a "Celebrity" class, which will store the name and information for a celebrity
 
-4.
- - Methods
-   - shuffle()
-   - guess()
-   - isCorrect()
+2. The list of celebrities, a score, and the chosen celebrity that you have to guess
 
-3.
- - Variable
-   - score
+3. initialize() -- initialize the game
+   scorePoint() -- increment score by one
+   discard()    -- take the top celebrity off the deck
 
-5. Pseudocode:
-  ARGS: A list of celebrities
-  1. Shuffle the list
-  2. 
+4. We will make the behaviors from question 3 into methods
+
+5. 
