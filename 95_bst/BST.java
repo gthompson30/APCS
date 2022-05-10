@@ -1,3 +1,5 @@
+
+
 /**
  * class BST
  * v1:partial
@@ -24,7 +26,7 @@ public class BST
    */
   BST()
   {
-    /*** YOUR IMPLEMENTATION HERE ***/
+    _root = new TreeNode(0);
   }
 
 
@@ -35,12 +37,27 @@ public class BST
   public void insert( int newVal )
   {
     TreeNode newNode = new TreeNode( newVal );
-    /*** YOUR IMPLEMENTATION HERE ***/
+    insert(_root, newNode);
   }
   //recursive helper for insert(int)
   public void insert( TreeNode stRoot, TreeNode newNode )
   {
-    /*** YOUR IMPLEMENTATION HERE ***/
+    if (newNode.getValue() < stRoot.getValue()) {
+      if (stRoot.getLeft() == null) { // check if left child is empty
+        stRoot.setLeft(newNode);
+      }
+      else { // process down
+        insert(stRoot.getLeft(), newNode);
+      }
+    }
+    else if (newNode.getValue() > stRoot.getValue()){ // newNode.getValue() > stRoot.getValue()
+      if (stRoot.getRight() == null) { // check if right child is empty
+        stRoot.setRight(newNode);
+      }
+      else { // process down
+        insert(stRoot.getRight(), newNode);
+      }
+    }
   }//end insert()
 
 
@@ -59,27 +76,64 @@ public class BST
   }
   public void preOrderTrav( TreeNode currNode )
   {
-    /*** YOUR IMPLEMENTATION HERE ***/
+    //base case: at the end of tree
+    if (currNode == null) {
+      return;
+    }
+    //process currNode
+    System.out.println(currNode.getValue());
+
+    //process left subtree
+    preOrderTrav(currNode.getLeft());
+
+    //process right subtree
+    preOrderTrav(currNode.getRight());
   }
 
   //recurse left, process root, recurse right
   public void inOrderTrav()
   {
-    /*** YOUR IMPLEMENTATION HERE ***/
+    inOrderTrav( _root );
   }
   public void inOrderTrav( TreeNode currNode )
   {
-    /*** YOUR IMPLEMENTATION HERE ***/
+    //base case: at the end of tree
+    if (currNode == null) {
+      return;
+    }
+
+    //process left subtree
+    inOrderTrav(currNode.getLeft());
+
+    //process currNode
+    System.out.println(currNode.getValue());
+
+    //process right subtree
+    inOrderTrav(currNode.getRight());
   }
+  
 
   //recurse left, recurse right, process root
   public void postOrderTrav()
   {
-    /*** YOUR IMPLEMENTATION HERE ***/
+    postOrderTrav(_root);
   }
   public void postOrderTrav( TreeNode currNode )
   {
-    /*** YOUR IMPLEMENTATION HERE ***/
+    //base case: at the end of tree
+    if (currNode == null) {
+      return;
+    }
+
+    //process left subtree
+    postOrderTrav(currNode.getLeft());
+
+    //process right subtree
+    postOrderTrav(currNode.getRight());
+    
+    //process currNode
+    System.out.println(currNode.getValue());
+    
   }
 
   //~~~~~~~~~~~~~^~~TRAVERSALS~~^~~~~~~~~~~~~~~~~~~~~~
@@ -89,7 +143,6 @@ public class BST
   //main method for testing
   public static void main( String[] args )
   {
-    /*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
 
       BST arbol = new BST();
 
@@ -115,6 +168,7 @@ public class BST
       arbol.postOrderTrav();
 
       System.out.println( "\n-----------------------------");
+    /*~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~~~~~~~~~~
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }
 
