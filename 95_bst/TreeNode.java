@@ -65,9 +65,7 @@ public class TreeNode
   }
 
 
-  /**
-   * Sets the value of the left subtree of this node.
-   */
+  /** * Sets the value of the left subtree of this node. */
   void setLeft( TreeNode theNewLeft )
   {
     _lt = theNewLeft;
