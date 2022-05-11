@@ -2,7 +2,7 @@
 // APCS
 // HW96 -- BSTs is the Perfect Place for Shade
 // 2022-05-10
-// time spent: 
+// time spent: 0.7hrs
 
 /**
  * class BST
