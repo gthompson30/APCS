@@ -72,6 +72,9 @@ public class ALHeap
   public Integer peekMin()
   {
     return _heap.get(0);
+
+        pile.add(8);
+        System.out.println(pile);
   }//O(1), because retrieving the value at an index in an ArrayList is a constant-time operation
 
 
